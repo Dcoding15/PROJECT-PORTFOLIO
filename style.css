@@ -21,7 +21,7 @@ body {
    Theme Variables
    ========================= */
 body.dark-mode {
-  --bg: #494747;
+  --bg: url("images/bg.jpg");
   --text: #fdf6f0;
   --muted: #e7c9b5;
   --card-bg: #2a1610;
@@ -34,7 +34,7 @@ body.dark-mode {
 }
 
 body.light-mode {
-  --bg: #fff8f1;
+  --bg: url("images/bg1.jpg");
   --text: #3b2f2f;
   --muted: #7c5c45;
   --card-bg: #ffffff;
@@ -47,8 +47,14 @@ body.light-mode {
 }
 
 body {
-  background: var(--bg);
+  background-image: var(--bg);
   color: var(--text);
+  position: static;
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(5px);
+  height: 1550px;
+  width: 100%;
 }
 
 /* =========================
@@ -209,7 +215,7 @@ h1 {
 }
 
 .card p {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--muted);
   line-height: 1.55;
 }
@@ -259,8 +265,21 @@ h1 {
 
 .project-detail p {
   color: var(--text);
+  font-weight: 400;
+  font-size: 1.2rem;
   line-height: 1.7;
   margin-bottom: 0.9rem;
+  background: linear-gradient(90deg, var(--card-bg), var(--card-bg));
+  border-radius: 0.6rem;
+  padding: 9px;
+  transition: all .2s ease;
+  box-shadow: var(--shadow);
+}
+
+.project-detail p:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+  box-shadow: var(--shadow-hover);
 }
 
 .project-detail .meta {
