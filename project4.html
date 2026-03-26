@@ -2,71 +2,584 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TODO Task Manager - Project Detail</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO Task Manager | Debrishi Biswas</title>
 
-<link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fef9e8 0%, #fef3e0 100%);
+            color: #2d2418;
+            line-height: 1.5;
+        }
+
+        /* back button */
+        .back-link {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+            z-index: 100;
+            border: 1px solid #e2e8f0;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            background: #f1f5f9;
+            transform: translateX(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .back-icon {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: #2d2418;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* header section */
+        .project-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .project-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #5a3e2b, #3e2a1c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            color: #5a4a3a;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 1.25rem 0 1rem;
+        }
+
+        .tech-tag {
+            background: #f0ebe4;
+            color: #5a3e2b;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        /* action buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #5a3e2b, #3e2a1c);
+            color: white;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(90, 62, 43, 0.2);
+        }
+
+        .btn-outline {
+            background: white;
+            border-color: #d4cbbc;
+            color: #2d2418;
+        }
+
+        .btn-outline:hover {
+            border-color: #5a3e2b;
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+
+        /* slideshow */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0 1rem;
+        }
+
+        .mySlides {
+            display: none;
+            animation: fade 0.4s ease;
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: auto;
+            max-height: 520px;
+            object-fit: contain;
+            background: #fef9f0;
+            display: block;
+        }
+
+        .numbertext {
+            position: absolute;
+            top: 16px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.65);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+            z-index: 2;
+        }
+
+        .text {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 20px 16px 12px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #2d2418;
+            transition: 0.2s;
+            user-select: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .prev:hover, .next:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.02);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .dots {
+            text-align: center;
+            margin: 1rem 0 2rem;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            margin: 0 6px;
+            background-color: #d4cbbc;
+            border-radius: 30px;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: #5a3e2b;
+            width: 26px;
+        }
+
+        @keyframes fade {
+            from {opacity: 0.4}
+            to {opacity: 1}
+        }
+
+        /* features grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            transition: all 0.2s;
+            border: 1px solid #e8dfd4;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #cbbc9b;
+            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            color: #5a3e2b;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #2d2418;
+        }
+
+        .feature-card p {
+            color: #5a4a3a;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* task preview section */
+        .task-preview {
+            background: linear-gradient(135deg, #5a3e2b, #3e2a1c);
+            border-radius: 28px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .task-preview h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #f5e6d3;
+        }
+
+        .task-preview p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .demo-task-list {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .demo-task-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .demo-task-item:last-child {
+            border-bottom: none;
+        }
+
+        .demo-checkbox {
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+        }
+
+        .demo-task-text {
+            flex: 1;
+            font-size: 0.9rem;
+        }
+
+        .demo-task-date {
+            font-size: 0.7rem;
+            opacity: 0.7;
+        }
+
+        hr {
+            margin: 2rem 0 1rem;
+            border: none;
+            border-top: 1px solid #e8dfd4;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7a6856;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+            .project-header h1 {
+                font-size: 1.8rem;
+            }
+            .prev, .next {
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- Back Button -->
-<a href="mini_project.html">
-<svg class="back-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-<path d="M15 18l-6-6 6-6"/>
-</svg>
-</a>
+    <a href="mini_project.html" class="back-link" aria-label="Back to Mini Projects">
+        <svg class="back-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </a>
 
-<div class="project-detail">
+    <div class="container">
+        <div class="project-header">
+            <h1>✅ TODO Task Manager</h1>
+            <div class="meta">
+                <span><i class="fas fa-calendar-alt"></i> January 10, 2026</span>
+                <span><i class="fas fa-tasks"></i> Task Management</span>
+                <span><i class="fas fa-clock"></i> Date & Time Tracking</span>
+            </div>
+            <div class="tech-stack">
+                <span class="tech-tag"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="tech-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="tech-tag"><i class="fab fa-js"></i> JavaScript (ES6)</span>
+                <span class="tech-tag"><i class="fas fa-database"></i> LocalStorage</span>
+                <span class="tech-tag"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
+            </div>
+            <div class="action-buttons">
+                <a href="#" class="btn btn-primary" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                <a href="#" class="btn btn-outline" target="_blank"><i class="fab fa-github"></i> View Source Code</a>
+            </div>
+        </div>
 
-<h1>TODO Task Manager</h1>
+        <!-- Slideshow -->
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 1</div>
+                <img src="images/todo1.png" alt="TODO Task Manager Interface">
+                <div class="text">📝 TODO Page – Create, manage, and track your daily tasks</div>
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
 
-<p class="meta">
-Category: Web Development • Completed: January 10, 2026
-</p>
+        <div class="dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+        </div>
 
+        <!-- Visual Task Preview -->
+        <div class="task-preview">
+            <h3><i class="fas fa-list-check"></i> Task Management Preview</h3>
+            <p>Organize your day with scheduled tasks and completion tracking</p>
+            <div class="demo-task-list">
+                <div class="demo-task-item">
+                    <div class="demo-checkbox"></div>
+                    <div class="demo-task-text">Complete project documentation</div>
+                    <div class="demo-task-date">Today, 5:00 PM</div>
+                </div>
+                <div class="demo-task-item">
+                    <div class="demo-checkbox"></div>
+                    <div class="demo-task-text">Review pull requests</div>
+                    <div class="demo-task-date">Tomorrow, 10:00 AM</div>
+                </div>
+                <div class="demo-task-item">
+                    <div class="demo-checkbox"></div>
+                    <div class="demo-task-text">Team meeting preparation</div>
+                    <div class="demo-task-date">Jan 15, 2:30 PM</div>
+                </div>
+            </div>
+            <p style="font-size: 0.8rem; margin-top: 1rem;"><i class="fas fa-plus-circle"></i> Add tasks with date & time • <i class="fas fa-check-double"></i> Mark completed • <i class="fas fa-trash"></i> Delete tasks</p>
+        </div>
 
-<!-- Slideshow -->
-<div class="slideshow-container">
+        <!-- Feature Cards -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-plus-circle"></i></div>
+                <h3>Task Creation</h3>
+                <p>This page allows users to add new tasks by entering a task name and selecting a date and time for better organization.</p>
+            </div>
 
-<div class="mySlides fade">
-<div class="numbertext">1 / 1</div>
-<img src="images/todo1.png" alt="Todo Page">
-<div class="text">Todo Page</div>
-</div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-save"></i></div>
+                <h3>Add Button</h3>
+                <p>When the user clicks the Add button, the task is saved and displayed in the task list below for immediate visibility.</p>
+            </div>
 
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-list"></i></div>
+                <h3>Task List</h3>
+                <p>All created tasks appear in a list with their scheduled date and time so users can easily track and prioritize them.</p>
+            </div>
 
-</div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-check-double"></i></div>
+                <h3>Task Actions</h3>
+                <p>Each task includes options to mark it as completed or delete it, helping users manage their tasks more efficiently.</p>
+            </div>
+        </div>
 
-<br>
+        <!-- Additional Stats -->
+        <div style="background: white; border-radius: 24px; padding: 1.5rem; margin: 1rem 0; border: 1px solid #e8dfd4;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; text-align: center;">
+                <div style="flex: 1;">
+                    <i class="fas fa-calendar-week" style="font-size: 1.8rem; color: #5a3e2b;"></i>
+                    <h4 style="margin: 0.5rem 0;">Scheduled Tasks</h4>
+                    <p style="font-size: 0.85rem; color: #5a4a3a;">Set specific dates and times for each task</p>
+                </div>
+                <div style="flex: 1;">
+                    <i class="fas fa-chart-line" style="font-size: 1.8rem; color: #5a3e2b;"></i>
+                    <h4 style="margin: 0.5rem 0;">Progress Tracking</h4>
+                    <p style="font-size: 0.85rem; color: #5a4a3a;">Mark completed tasks and monitor productivity</p>
+                </div>
+                <div style="flex: 1;">
+                    <i class="fas fa-database" style="font-size: 1.8rem; color: #5a3e2b;"></i>
+                    <h4 style="margin: 0.5rem 0;">Persistent Storage</h4>
+                    <p style="font-size: 0.85rem; color: #5a4a3a;">Tasks saved locally, available after page refresh</p>
+                </div>
+            </div>
+        </div>
 
-<div class="dots">
-<span class="dot" onclick="currentSlide(1)"></span>
-</div>
+        <hr>
+        <div class="footer-note">
+            <i class="fas fa-code"></i> Pure JavaScript implementation • LocalStorage persistence • Fully responsive
+        </div>
+    </div>
 
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
-<!-- Description -->
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
 
-<p>
-Task Creation: This page allows users to add new tasks by entering a task name and selecting a date and time.
-</p>
-<p>
-Add Button: When the user clicks the Add button, the task is saved and displayed in the task list below.
-</p>
-<p>
-Task List: All created tasks appear in a list with their scheduled date and time so users can easily track them.
-</p>
-<p>
-Task Actions: Each task includes options to mark it as completed or delete it, helping users manage their tasks more efficiently.
-</p>
-  
-</div>
-<script src="script.js"></script>
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            if (slides[slideIndex - 1]) {
+                slides[slideIndex - 1].style.display = "block";
+            }
+            if (dots[slideIndex - 1]) {
+                dots[slideIndex - 1].className += " active";
+            }
+        }
+
+        // Auto-slide for single image (optional, but keeps consistency)
+        let autoTimer;
+        function startAutoSlide() {
+            if (document.getElementsByClassName("mySlides").length > 1) {
+                autoTimer = setInterval(() => {
+                    plusSlides(1);
+                }, 6000);
+            }
+        }
+        function stopAutoSlide() {
+            clearInterval(autoTimer);
+        }
+        
+        const container = document.querySelector('.slideshow-container');
+        if (container && document.getElementsByClassName("mySlides").length > 1) {
+            container.addEventListener('mouseenter', stopAutoSlide);
+            container.addEventListener('mouseleave', startAutoSlide);
+            startAutoSlide();
+        }
+    </script>
+
 </body>
 
 </html>
-
-
