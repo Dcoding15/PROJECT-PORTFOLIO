@@ -2,36 +2,256 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mini Projects</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Projects | Debrishi Biswas</title>
 
-<link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fef9e8 0%, #fef3e0 100%);
+            color: #2d2418;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        /* back button */
+        .back-link {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s ease;
+            z-index: 100;
+            border: 1px solid #e2e8f0;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            background: #f1f5f9;
+            transform: translateX(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .back-icon {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: #2d2418;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* main container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* header section */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #5a3e2b, #3e2a1c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: #5a4a3a;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* projects grid */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            border: 1px solid #e8dfd4;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #cbbc9b;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #f0ebe4, #e8dfd4);
+            transition: transform 0.3s;
+        }
+
+        .card:hover .card-image {
+            transform: scale(1.02);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .card-content h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            color: #2d2418;
+            letter-spacing: -0.01em;
+        }
+
+        .card-content p {
+            color: #5a4a3a;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: #f0ebe4;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #5a3e2b;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        /* placeholder for empty state */
+        .empty-state {
+            text-align: center;
+            padding: 4rem;
+            background: white;
+            border-radius: 28px;
+            border: 1px solid #e8dfd4;
+            color: #7a6856;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #cbbc9b;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .projects {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- Back button -->
-<a href="index.html">
-<svg class="back-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-<path d="M15 18l-6-6 6-6"/>
-</svg>
-</a>
+    <a href="index.html" class="back-link" aria-label="Back to portfolio">
+        <svg class="back-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </a>
 
-<h1>AI/ML Projects</h1>
+    <div class="container">
+        <div class="page-header">
+            <h1>🤖 AI/ML Projects</h1>
+            <p>Machine learning models and artificial intelligence experiments</p>
+        </div>
 
-<div class="projects">
+        <div class="projects">
+            <!-- Project Card - Add your projects here -->
+            <a href="#" class="card">
+                <img src="images/ml1.png" alt="Machine Learning Project" class="card-image">
+                <div class="card-content">
+                    <h2>Project Title 1</h2>
+                    <p>Brief description of your machine learning project goes here. Explain what problem it solves and the approach used.</p>
+                    <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
+                    <span class="tech-badge"><i class="fas fa-chart-line"></i> Scikit-learn</span>
+                    <span class="tech-badge"><i class="fas fa-brain"></i> ML</span>
+                </div>
+            </a>
 
-<!-- Project Card -->
-<a href="#" class="card">
-<img src="" alt="AI/ML Project">
-<div class="card-content">
-<h2>Project Title</h2>
-<p>Description</p>
-</div>
-</a>
+            <a href="#" class="card">
+                <img src="images/ml2.png" alt="Machine Learning Project" class="card-image">
+                <div class="card-content">
+                    <h2>Project Title 2</h2>
+                    <p>Brief description of your machine learning project goes here. Explain what problem it solves and the approach used.</p>
+                    <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
+                    <span class="tech-badge"><i class="fas fa-chart-line"></i> TensorFlow</span>
+                    <span class="tech-badge"><i class="fas fa-database"></i> Data Analysis</span>
+                </div>
+            </a>
 
-</div>
+            <a href="#" class="card">
+                <img src="images/ml3.png" alt="Machine Learning Project" class="card-image">
+                <div class="card-content">
+                    <h2>Project Title 3</h2>
+                    <p>Brief description of your machine learning project goes here. Explain what problem it solves and the approach used.</p>
+                    <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
+                    <span class="tech-badge"><i class="fas fa-chart-line"></i> Pandas</span>
+                    <span class="tech-badge"><i class="fas fa-chart-bar"></i> Visualization</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Empty state message (remove when you add projects) -->
+        <!-- <div class="empty-state">
+            <i class="fas fa-robot"></i>
+            <h3>Coming Soon</h3>
+            <p>AI/ML projects are currently in development. Check back later!</p>
+        </div> -->
+    </div>
 
 </body>
+
 </html>
