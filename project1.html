@@ -2,103 +2,507 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hotel Management - Project Detail</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System | Debrishi Biswas</title>
 
-<link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.5;
+        }
+
+        /* back button */
+        .back-link {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+            z-index: 100;
+            border: 1px solid #e2e8f0;
+        }
+
+        .back-link:hover {
+            background: #f1f5f9;
+            transform: translateX(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .back-icon {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: #1e293b;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* header section */
+        .project-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .project-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e293b, #2c3e66);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            color: #475569;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 1.25rem 0 1rem;
+        }
+
+        .tech-tag {
+            background: #eef2ff;
+            color: #1e40af;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        /* action buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: #0f172a;
+            color: white;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-primary:hover {
+            background: #1e293b;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: white;
+            border-color: #cbd5e1;
+            color: #1e293b;
+        }
+
+        .btn-outline:hover {
+            border-color: #0f172a;
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+
+        /* slideshow */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0 1rem;
+        }
+
+        .mySlides {
+            display: none;
+            animation: fade 0.4s ease;
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: auto;
+            max-height: 520px;
+            object-fit: contain;
+            background: #f1f5f9;
+            display: block;
+        }
+
+        .numbertext {
+            position: absolute;
+            top: 16px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.65);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+            z-index: 2;
+        }
+
+        .text {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 20px 16px 12px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #0f172a;
+            transition: 0.2s;
+            user-select: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .prev:hover, .next:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.02);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .dots {
+            text-align: center;
+            margin: 1rem 0 2rem;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            margin: 0 6px;
+            background-color: #cbd5e1;
+            border-radius: 30px;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: #0f172a;
+            width: 26px;
+        }
+
+        @keyframes fade {
+            from {opacity: 0.4}
+            to {opacity: 1}
+        }
+
+        /* features grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #cbd5e1;
+            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: #334155;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        hr {
+            margin: 2rem 0 1rem;
+            border: none;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+            .project-header h1 {
+                font-size: 1.8rem;
+            }
+            .prev, .next {
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- Back Button -->
-<a href="index.html">
-<svg class="back-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-<path d="M15 18l-6-6 6-6"/>
-</svg>
-</a>
+    <a href="index.html" class="back-link" aria-label="Back to portfolio">
+        <svg class="back-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </a>
 
-<div class="project-detail">
+    <div class="container">
+        <div class="project-header">
+            <h1>🏨 Hotel Management System</h1>
+            <div class="meta">
+                <span><i class="fas fa-calendar-alt"></i> June 28, 2024</span>
+                <span><i class="fas fa-code-branch"></i> Full-stack project</span>
+                <span><i class="fas fa-users"></i> Role-based access (Admin / Customer)</span>
+            </div>
+            <div class="tech-stack">
+                <span class="tech-tag"><i class="fab fa-python"></i> Django</span>
+                <span class="tech-tag"><i class="fas fa-database"></i> SQLite</span>
+                <span class="tech-tag"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="tech-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="tech-tag"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="tech-tag"><i class="fas fa-lock"></i> Auth system</span>
+            </div>
+            <div class="action-buttons">
+                <a href="#" class="btn btn-primary" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo (coming soon)</a>
+                <a href="#" class="btn btn-outline" target="_blank"><i class="fab fa-github"></i> View Source Code</a>
+            </div>
+        </div>
 
-<h1>Hotel Management Website</h1>
+        <!-- Slideshow (same structure but now visually enhanced) -->
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 5</div>
+                <img src="images/hotel1.png" alt="Hotel Homepage - hero section and inquiry form">
+                <div class="text">🏠 Home Page – Visitor inquiries & feedback</div>
+            </div>
 
-<p class="meta">
-Category: Web Development • Completed: June 28, 2024
-</p>
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 5</div>
+                <img src="images/hotel2.png" alt="Hotel second part">
+                <div class="text">🌟 Home Page – Highlights & amenities</div>
+            </div>
 
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 5</div>
+                <img src="images/hotel3.png" alt="Booking registration page">
+                <div class="text">📝 Registration – Booking & auto room assignment</div>
+            </div>
 
-<div class="slideshow-container">
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 5</div>
+                <img src="images/hotel4.png" alt="Admin login">
+                <div class="text">🔐 Admin Login – Secure gateway for staff</div>
+            </div>
 
-<div class="mySlides fade">
-<div class="numbertext">1 / 5</div>
-<img src="images/hotel1.png" alt="Home Page Part 1">
-<div class="text">Home Page - Part 1</div>
-</div>
+            <div class="mySlides fade">
+                <div class="numbertext">5 / 5</div>
+                <img src="images/hotel5.png" alt="Customer dashboard">
+                <div class="text">📊 Customer Dashboard – Manage bookings & records</div>
+            </div>
 
-<div class="mySlides fade">
-<div class="numbertext">2 / 5</div>
-<img src="images/hotel2.png" alt="Home Page Part 2">
-<div class="text">Home Page - Part 2</div>
-</div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
 
-<div class="mySlides fade">
-<div class="numbertext">3 / 5</div>
-<img src="images/hotel3.png" alt="Registration Page">
-<div class="text">Registration Page</div>
-</div>
+        <div class="dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+        </div>
 
-<div class="mySlides fade">
-<div class="numbertext">4 / 5</div>
-<img src="images/hotel4.png" alt="Admin Login Page">
-<div class="text">Admin Login Page</div>
-</div>
+        <!-- Feature cards: more scannable -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-home"></i></div>
+                <h3>Home & Inquiries</h3>
+                <p>Main entry interface that captures visitor inquiries and feedback, creating a communication bridge between users and the system.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+                <h3>Smart Registration</h3>
+                <p>Handles user booking details and automatically assigns rooms while storing reservation data securely.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                <h3>Booking Confirmation</h3>
+                <p>Displays the assigned room number and hotel information once the booking process is completed.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+                <h3>Admin Panel</h3>
+                <p>Secure authentication gateway that allows authorized administrators to access system controls and manage operations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chalkboard-user"></i></div>
+                <h3>Customer Dashboard</h3>
+                <p>Centralized view of guest records and booking activities for efficient management.</p>
+            </div>
+        </div>
 
-<div class="mySlides fade">
-<div class="numbertext">5 / 5</div>
-<img src="images/hotel5.png" alt="Customer Log Page">
-<div class="text">Customer Log Page</div>
-</div>
+        <hr>
+        <div class="footer-note">
+            <i class="fas fa-code"></i> Built with Django • Fully responsive • Role-based authentication
+        </div>
+    </div>
 
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
 
-</div>
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
 
-<br>
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            if (slides[slideIndex - 1]) {
+                slides[slideIndex - 1].style.display = "block";
+            }
+            if (dots[slideIndex - 1]) {
+                dots[slideIndex - 1].className += " active";
+            }
+        }
 
-<div class="dots">
+        // optional: auto slide every 6 seconds (but won't conflict)
+        let autoTimer;
+        function startAutoSlide() {
+            autoTimer = setInterval(() => {
+                plusSlides(1);
+            }, 6000);
+        }
+        function stopAutoSlide() {
+            clearInterval(autoTimer);
+        }
+        const container = document.querySelector('.slideshow-container');
+        if (container) {
+            container.addEventListener('mouseenter', stopAutoSlide);
+            container.addEventListener('mouseleave', startAutoSlide);
+            startAutoSlide();
+        }
+    </script>
 
-<span class="dot" onclick="currentSlide(1)"></span>
-<span class="dot" onclick="currentSlide(2)"></span>
-<span class="dot" onclick="currentSlide(3)"></span>
-<span class="dot" onclick="currentSlide(4)"></span>
-<span class="dot" onclick="currentSlide(5)"></span>
-
-</div>
-
-
-<p>
-Home Page – The main entry interface that captures visitor inquiries and feedback, creating a communication bridge between users and the system.
-</p>
-
-<p>
-Registration – Handles user booking details and automatically assigns rooms while storing reservation data securely.
-</p>
-
-<p>
-Confirmation – Displays the assigned room number and hotel information once the booking process is completed.
-</p>
-
-<p>
-Admin Login – A secure authentication gateway that allows authorized administrators to access system controls.
-</p>
-
-<p>
-Customer Log Dashboard – Provides a centralized view of guest records and booking activities for efficient management.
-</p>
-
-</div>
-<script src="script.js"></script>
 </body>
+
 </html>
