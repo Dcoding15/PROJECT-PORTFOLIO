@@ -2,74 +2,448 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <title>Debrishi Biswas – Django Developer Portfolio | Web & Machine Learning Projects</title>
-  <meta name="description" content="Debrishi Biswas's portfolio showcasing web apps, machine learning projects, hotel management system, doctor booking app, and more.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="images/icon.png">
-  <meta property="og:title" content="Debrishi Biswas – Django Developer Portfolio">
-  <meta property="og:description" content="Projects like hotel management, doctor booking app, etc.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://dcoding15.github.io/PROJECT-PORTFOLIO/">
-  <meta property="og:image" content="images/icon.png">
-  
-  <link rel="stylesheet" href="style.css"/>
+<title>Debrishi Biswas – Django Developer Portfolio | Web Applications</title>
+<meta name="description" content="Debrishi Biswas's portfolio showcasing web applications including Hotel Management System, Doctor Booking App, and interactive mini-projects built with Django.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="images/icon.png">
+<meta property="og:title" content="Debrishi Biswas – Django Developer Portfolio">
+<meta property="og:description" content="Full-stack Django projects: Hotel Management, Doctor Booking, Tic Tac Toe, TODO Task Manager, and more.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dcoding15.github.io/PROJECT-PORTFOLIO/">
+<meta property="og:image" content="images/icon.png">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome 6 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #f8fafc 0%, #eef2f6 100%);
+        color: #0f172a;
+        line-height: 1.5;
+        min-height: 100vh;
+    }
+
+    /* About Me Button */
+    .about-btn {
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+        z-index: 100;
+        transition: transform 0.2s ease;
+    }
+
+    .about-btn:hover {
+        transform: scale(1.05) translateY(-2px);
+    }
+
+    .about-img {
+        width: 52px;
+        height: 52px;
+        border-radius: 60px;
+        object-fit: cover;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border: 3px solid white;
+        transition: box-shadow 0.2s;
+    }
+
+    .about-img:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Main Container */
+    .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+    }
+
+    /* Header Section */
+    .hero {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #0f172a, #2d3a5e);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        color: #475569;
+        max-width: 600px;
+        margin: 0 auto 1.5rem;
+    }
+
+    /* Tech Stack Pills */
+    .tech-pills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+    }
+
+    .pill {
+        background: white;
+        padding: 0.4rem 1rem;
+        border-radius: 40px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #1e4a6b;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        border: 1px solid #e2e8f0;
+    }
+
+    .pill i {
+        margin-right: 0.4rem;
+        font-size: 0.8rem;
+    }
+
+    /* Search Bar */
+    .search-container {
+        max-width: 500px;
+        margin: 0 auto 2.5rem;
+        position: relative;
+    }
+
+    .search-container i {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #94a3b8;
+        font-size: 1rem;
+    }
+
+    #searchInput {
+        width: 100%;
+        padding: 0.9rem 1rem 0.9rem 2.8rem;
+        font-size: 1rem;
+        font-family: 'Inter', sans-serif;
+        border: 1px solid #e2e8f0;
+        border-radius: 60px;
+        background: white;
+        transition: all 0.2s;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    #searchInput:focus {
+        outline: none;
+        border-color: #1e4a6b;
+        box-shadow: 0 4px 15px rgba(30, 74, 107, 0.1);
+    }
+
+    /* Projects Grid */
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 2rem;
+        margin-top: 1rem;
+    }
+
+    .card {
+        background: white;
+        border-radius: 28px;
+        overflow: hidden;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+        border: 1px solid #eef2f6;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+        border-color: #cbd5e1;
+        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        background: linear-gradient(135deg, #eef2ff, #e6e9f0);
+        transition: transform 0.3s;
+    }
+
+    .card:hover .card-image {
+        transform: scale(1.02);
+    }
+
+    .card-content {
+        padding: 1.5rem;
+        flex: 1;
+    }
+
+    .card-content h2 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin-bottom: 0.6rem;
+        color: #0f172a;
+        letter-spacing: -0.01em;
+    }
+
+    .card-content p {
+        color: #475569;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+
+    .tech-badge {
+        display: inline-block;
+        background: #f1f5f9;
+        padding: 0.2rem 0.7rem;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: #1e4a6b;
+        margin-top: 0.5rem;
+    }
+
+    /* No Results */
+    .hidden {
+        display: none;
+    }
+
+    #noResults {
+        text-align: center;
+        padding: 3rem;
+        color: #64748b;
+        font-size: 1rem;
+        background: white;
+        border-radius: 40px;
+        margin-top: 2rem;
+        border: 1px solid #e2e8f0;
+    }
+
+    /* Footer */
+    .footer {
+        text-align: center;
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e2e8f0;
+        color: #64748b;
+        font-size: 0.85rem;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .social-links a {
+        color: #475569;
+        font-size: 1.2rem;
+        transition: color 0.2s;
+    }
+
+    .social-links a:hover {
+        color: #1e4a6b;
+    }
+
+    @media (max-width: 700px) {
+        .container {
+            padding: 1.5rem 1rem 3rem;
+        }
+        .hero h1 {
+            font-size: 2rem;
+        }
+        .projects {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+        .about-btn {
+            top: 1rem;
+            right: 1rem;
+        }
+        .about-img {
+            width: 44px;
+            height: 44px;
+        }
+    }
+</style>
 </head>
 <body>
 
-  <!-- Header -->
-  <a href="about.html">
-    <div>
-      <img src="images/about_me.png" alt="person-image" height="50" width="80" id="aboutme">
+<!-- About Me Button -->
+<a href="about.html" class="about-btn">
+    <img src="images/about_me.png" alt="About Debrishi" class="about-img">
+</a>
+
+<div class="container">
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>✨ Debrishi Biswas</h1>
+        <div class="hero-subtitle">
+            Django Developer • Full-Stack Web Applications • Problem Solver
+        </div>
+        <div class="tech-pills">
+            <span class="pill"><i class="fab fa-python"></i> Django</span>
+            <span class="pill"><i class="fas fa-database"></i> SQLite / PostgreSQL</span>
+            <span class="pill"><i class="fab fa-html5"></i> HTML5 & CSS3</span>
+            <span class="pill"><i class="fab fa-js"></i> JavaScript</span>
+            <span class="pill"><i class="fas fa-user-lock"></i> Role-based Auth</span>
+            <span class="pill"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
+        </div>
     </div>
-  </a>
 
-  <!-- Heading -->
-  <h1>Project Portfolio</h1>
+    <!-- Search Bar -->
+    <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search projects by name or technology...">
+    </div>
 
-  <!-- Search Bar -->
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search projects..."/>
-  </div>
+    <!-- Projects Grid -->
+    <div class="projects" id="projectsContainer">
+        <!-- Hotel Management -->
+        <a href="project1.html" class="card" data-title="hotel management website">
+            <img src="images/p1.jpg" alt="Hotel Management System" class="card-image">
+            <div class="card-content">
+                <h2>🏨 Hotel Management System</h2>
+                <p>Customer registration, auto room assignment, admin dashboard, and secure authentication gateway for staff management.</p>
+                <span class="tech-badge"><i class="fab fa-python"></i> Django</span>
+                <span class="tech-badge"><i class="fas fa-lock"></i> Auth System</span>
+                <span class="tech-badge"><i class="fas fa-chart-line"></i> Dashboard</span>
+            </div>
+        </a>
 
-  <!-- Projects Grid -->
-  <div class="projects">
-    <!-- Project Start Here -->
-    <!-- <a href="project_ml.html" class="card">
-      <img src="images/ml.jpg" alt="Project ML"/>
-      <div class="card-content">
-        <h2>Machine Learning Projects</h2>
-        <p>Provide Analytical Information using Machine Learning ALgorithms</p>
-      </div>
-    </a> -->
-    <a href="mini_project.html" class="card">
-      <img src="images/mini.jpg" alt="Project 2"/>
-      <div class="card-content">
-        <h2>Mini Projects</h2>
-        <p>These are mini-projects, not large-scale applications.
-        </p>
-      </div>
-    </a>
-    <a href="project1.html" class="card">
-      <img src="images/p1.jpg" alt="Project 1"/>
-      <div class="card-content">
-        <h2>Hotel Management Website</h2>
-        <p>Manage Customer Registration and Staff Login</p>
-      </div>
-    </a>
-    <a href="project3.html" class="card">
-      <img src="images/p3.jpg" alt="Project 3"/>
-      <div class="card-content">
-        <h2>Doctor Booking System</h2>
-        <p>Manage Patient appoinments and checking for doctor availablity</p>
-      </div>
-    </a>
-    <!-- Project End Here-->
-  </div>
+        <!-- Doctor Booking -->
+        <a href="project3.html" class="card" data-title="doctor booking system">
+            <img src="images/p3.jpg" alt="Doctor Booking System" class="card-image">
+            <div class="card-content">
+                <h2>🏥 Doctor Booking System</h2>
+                <p>Dual registration (patients & doctors), appointment scheduling, availability management, role-based dashboards.</p>
+                <span class="tech-badge"><i class="fab fa-python"></i> Django</span>
+                <span class="tech-badge"><i class="fas fa-user-md"></i> Dual Roles</span>
+                <span class="tech-badge"><i class="fas fa-calendar-check"></i> Appointments</span>
+            </div>
+        </a>
 
-  <!-- No Results -->
-  <p id="noResults" class="hidden">No results found.</p>
+        <!-- Mini Projects (Tic Tac Toe Classic) -->
+        <a href="mini_project.html" class="card" data-title="tic tac toe classic mini projects">
+            <img src="images/mini.jpg" alt="Tic Tac Toe Classic" class="card-image">
+            <div class="card-content">
+                <h2>🎮 Tic Tac Toe (Classic)</h2>
+                <p>Two-player turn-based game with win detection, draw logic, and reset functionality. Pure JavaScript frontend.</p>
+                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="tech-badge"><i class="fas fa-gamepad"></i> Interactive</span>
+            </div>
+        </a>
 
-  <!-- Script & Style -->
-  <script src="script.js"></script>
+        <!-- Tic Tac Toe Enhanced (project2) -->
+        <a href="project2.html" class="card" data-title="tic tac toe two players game">
+            <img src="images/mini.jpg" alt="Tic Tac Toe Enhanced" class="card-image">
+            <div class="card-content">
+                <h2>🎯 Tic Tac Toe (Scoreboard)</h2>
+                <p>Enhanced version with start page, score tracking, winner detection, and main menu reset. Two-player experience.</p>
+                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="tech-badge"><i class="fas fa-chart-simple"></i> Scoreboard</span>
+                <span class="tech-badge"><i class="fas fa-undo-alt"></i> Reset Logic</span>
+            </div>
+        </a>
+
+        <!-- TODO Task Manager -->
+        <a href="project4.html" class="card" data-title="todo task manager">
+            <img src="images/p1.jpg" alt="TODO Task Manager" class="card-image">
+            <div class="card-content">
+                <h2>✅ TODO Task Manager</h2>
+                <p>Create tasks with date/time, mark complete, delete items, and persistent task list for daily organization.</p>
+                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="tech-badge"><i class="fas fa-tasks"></i> Task CRUD</span>
+                <span class="tech-badge"><i class="fas fa-clock"></i> Date/Time</span>
+            </div>
+        </a>
+
+        <!-- Simple Mail Sender -->
+        <a href="project5.html" class="card" data-title="simple mail sender contact form">
+            <img src="images/p3.jpg" alt="Mail Sender" class="card-image">
+            <div class="card-content">
+                <h2>📧 Simple Mail Sender</h2>
+                <p>Contact form with name, email, subject, message, and confirmation page. Backend-ready Django integration.</p>
+                <span class="tech-badge"><i class="fab fa-python"></i> Django Ready</span>
+                <span class="tech-badge"><i class="fas fa-envelope"></i> Email Form</span>
+                <span class="tech-badge"><i class="fas fa-check-circle"></i> Confirmation</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- No Results Message -->
+    <p id="noResults" class="hidden">🔍 No projects found. Try searching for "hotel", "doctor", or "tic tac toe".</p>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="social-links">
+            <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>Built with Django • Full-stack web applications • <span id="currentYear"></span></p>
+    </div>
+</div>
+
+<script>
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const projectsContainer = document.getElementById('projectsContainer');
+    const cards = Array.from(document.querySelectorAll('.card'));
+    const noResults = document.getElementById('noResults');
+
+    function filterProjects() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const title = card.getAttribute('data-title') || card.querySelector('h2')?.innerText.toLowerCase() || '';
+            const description = card.querySelector('p')?.innerText.toLowerCase() || '';
+            const badges = Array.from(card.querySelectorAll('.tech-badge')).map(b => b.innerText.toLowerCase()).join(' ');
+            
+            const matches = searchTerm === '' || 
+                title.includes(searchTerm) || 
+                description.includes(searchTerm) || 
+                badges.includes(searchTerm);
+            
+            if (matches) {
+                card.style.display = '';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        if (visibleCount === 0 && searchTerm !== '') {
+            noResults.classList.remove('hidden');
+        } else {
+            noResults.classList.add('hidden');
+        }
+    }
+
+    searchInput.addEventListener('input', filterProjects);
+    
+    // Set current year in footer
+    document.getElementById('currentYear').innerText = new Date().getFullYear();
+</script>
+
 </body>
 </html>
