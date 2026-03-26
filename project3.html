@@ -2,136 +2,591 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doctor Booking System - Project Detail</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Booking System | Debrishi Biswas</title>
 
-<link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9eef5 100%);
+            color: #0f172a;
+            line-height: 1.5;
+        }
+
+        /* back button */
+        .back-link {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s ease;
+            z-index: 100;
+            border: 1px solid #e2e8f0;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            background: #f1f5f9;
+            transform: translateX(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .back-icon {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: #1e293b;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* main container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* header section */
+        .project-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .project-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0f2b3d, #1e4a6b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            color: #475569;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 1.25rem 0 1rem;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #e6f0fa, #d9e6f2);
+            color: #1e4a6b;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        /* action buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1e4a6b, #0f2b3d);
+            color: white;
+            box-shadow: 0 4px 12px rgba(30, 74, 107, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 74, 107, 0.3);
+        }
+
+        .btn-outline {
+            background: white;
+            border-color: #cbd5e1;
+            color: #1e293b;
+        }
+
+        .btn-outline:hover {
+            border-color: #1e4a6b;
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+
+        /* slideshow */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+            margin: 2rem 0 1rem;
+        }
+
+        .mySlides {
+            display: none;
+            animation: fade 0.4s ease;
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: auto;
+            max-height: 550px;
+            object-fit: contain;
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            display: block;
+        }
+
+        .numbertext {
+            position: absolute;
+            top: 16px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+            z-index: 2;
+        }
+
+        .text {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+            color: white;
+            padding: 20px 16px 12px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #0f172a;
+            transition: 0.2s;
+            user-select: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .prev:hover, .next:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.02);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .dots {
+            text-align: center;
+            margin: 1rem 0 2rem;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #cbd5e1;
+            border-radius: 30px;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: #1e4a6b;
+            width: 26px;
+        }
+
+        @keyframes fade {
+            from {opacity: 0.4}
+            to {opacity: 1}
+        }
+
+        /* features grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            transition: all 0.25s;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #cbd5e1;
+            box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: #1e4a6b;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #0f172a;
+        }
+
+        .feature-card p {
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .highlight-badge {
+            display: inline-block;
+            background: #e6f0fa;
+            color: #1e4a6b;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-top: 0.75rem;
+            font-weight: 500;
+        }
+
+        hr {
+            margin: 2rem 0 1rem;
+            border: none;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 2rem;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+            .project-header h1 {
+                font-size: 1.8rem;
+            }
+            .prev, .next {
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- Back Button -->
-<a href="index.html">
-<svg class="back-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-<path d="M15 18l-6-6 6-6"/>
-</svg>
-</a>
+    <a href="index.html" class="back-link" aria-label="Back to portfolio">
+        <svg class="back-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </a>
 
-<div class="project-detail">
+    <div class="container">
+        <div class="project-header">
+            <h1>🏥 Doctor Booking System</h1>
+            <div class="meta">
+                <span><i class="fas fa-calendar-alt"></i> September 10, 2025</span>
+                <span><i class="fas fa-user-md"></i> Dual Role System</span>
+                <span><i class="fas fa-calendar-check"></i> Appointment Management</span>
+            </div>
+            <div class="tech-stack">
+                <span class="tech-tag"><i class="fab fa-python"></i> Django</span>
+                <span class="tech-tag"><i class="fas fa-database"></i> PostgreSQL</span>
+                <span class="tech-tag"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="tech-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="tech-tag"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="tech-tag"><i class="fas fa-user-lock"></i> Role-based Auth</span>
+                <span class="tech-tag"><i class="fas fa-envelope"></i> Notifications</span>
+            </div>
+            <div class="action-buttons">
+                <a href="#" class="btn btn-primary" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo (coming soon)</a>
+                <a href="#" class="btn btn-outline" target="_blank"><i class="fab fa-github"></i> View Source Code</a>
+            </div>
+        </div>
 
-<h1>Doctor Booking Website</h1>
+        <!-- Slideshow -->
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 9</div>
+                <img src="images/doctor1.png" alt="Home Page - Doctor listing">
+                <div class="text">🏠 Home – Browse all available doctors</div>
+            </div>
 
-<p class="meta">
-Category: Web Development • Completed: September 10, 2025
-</p>
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 9</div>
+                <img src="images/doctor2.png" alt="Doctor Registration">
+                <div class="text">👨‍⚕️ Doctor Registration – Create professional profile</div>
+            </div>
 
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 9</div>
+                <img src="images/doctor3.png" alt="Patient Registration">
+                <div class="text">👤 Patient Registration – Sign up for appointments</div>
+            </div>
 
-<div class="slideshow-container">
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 9</div>
+                <img src="images/doctor4.png" alt="Login Page">
+                <div class="text">🔐 Login – Secure authentication for both roles</div>
+            </div>
 
-<div class="mySlides fade">
-<div class="numbertext">1 / 9</div>
-<img src="images/doctor1.png" alt="Home Page">
-<div class="text">Home Page</div>
-</div>
+            <div class="mySlides fade">
+                <div class="numbertext">5 / 9</div>
+                <img src="images/doctor5.png" alt="Doctor Dashboard">
+                <div class="text">📋 Doctor Dashboard – Manage availability & requests</div>
+            </div>
 
-<div class="mySlides fade">
-<div class="numbertext">2 / 9</div>
-<img src="images/doctor2.png" alt="Patient Registration Page">
-<div class="text">Doctor Registration Page</div>
-</div>
+            <div class="mySlides fade">
+                <div class="numbertext">6 / 9</div>
+                <img src="images/doctor6.png" alt="Patient Dashboard">
+                <div class="text">📊 Patient Dashboard – View appointments & messages</div>
+            </div>
 
-<div class="mySlides fade">
-<div class="numbertext">3 / 9</div>
-<img src="images/doctor3.png" alt="Patient Registration Page">
-<div class="text">Patient Registration Page</div>
-</div>
+            <div class="mySlides fade">
+                <div class="numbertext">7 / 9</div>
+                <img src="images/doctor7.png" alt="Appointment Booking">
+                <div class="text">📅 Book Appointment – Select doctor, date & medical info</div>
+            </div>
 
-<div class="mySlides fade">
-<div class="numbertext">4 / 9</div>
-<img src="images/doctor4.png" alt="Login Page">
-<div class="text">Login Page</div>
-</div>
+            <div class="mySlides fade">
+                <div class="numbertext">8 / 9</div>
+                <img src="images/doctor8.png" alt="Patient Home View">
+                <div class="text">🏠 Patient Portal – Personalized home view</div>
+            </div>
 
-<div class="mySlides fade">
-<div class="numbertext">5 / 9</div>
-<img src="images/doctor5.png" alt="Doctor Profile Page Part 1">
-<div class="text">Doctor Profile Page</div>
-</div>
+            <div class="mySlides fade">
+                <div class="numbertext">9 / 9</div>
+                <img src="images/doctor9.png" alt="Doctor Home View">
+                <div class="text">👨‍⚕️ Doctor Portal – Professional dashboard</div>
+            </div>
 
-<div class="mySlides fade">
-<div class="numbertext">6 / 9</div>
-<img src="images/doctor6.png" alt="Patient Profile Page">
-<div class="text">Patient Profile Page</div>
-</div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
 
-<div class="mySlides fade">
-<div class="numbertext">7 / 9</div>
-<img src="images/doctor7.png" alt="Appointment Page">
-<div class="text">Appointment Page for Patient</div>
-</div>
+        <div class="dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+            <span class="dot" onclick="currentSlide(7)"></span>
+            <span class="dot" onclick="currentSlide(8)"></span>
+            <span class="dot" onclick="currentSlide(9)"></span>
+        </div>
 
-<div class="mySlides fade">
-<div class="numbertext">8 / 9</div>
-<img src="images/doctor8.png" alt="Doctor Profile Page Part 2">
-<div class="text">Home Page from Patient Profile</div>
-</div>
+        <!-- Feature Cards (enhanced) -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-stethoscope"></i></div>
+                <h3>Doctor Discovery</h3>
+                <p>Home page displays all available doctors with their specialties, allowing patients to quickly find the right medical professional.</p>
+                <span class="highlight-badge"><i class="fas fa-search"></i> Smart filtering</span>
+            </div>
 
-<div class="mySlides fade">
-<div class="numbertext">9 / 9</div>
-<img src="images/doctor9.png" alt="Doctor Profile Page Part 2">
-<div class="text">Home Page from Doctor Profile</div>
-</div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-id-card"></i></div>
+                <h3>Dual Registration</h3>
+                <p>Separate registration flows for patients and doctors. Collects essential personal details for patients and professional credentials for doctors.</p>
+                <span class="highlight-badge"><i class="fas fa-user-plus"></i> Role-specific forms</span>
+            </div>
 
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-sign-in-alt"></i></div>
+                <h3>Secure Authentication</h3>
+                <p>Role-based login system that authenticates users and redirects them to their personalized dashboards based on their role (patient/doctor).</p>
+                <span class="highlight-badge"><i class="fas fa-shield-alt"></i> Password hashing</span>
+            </div>
 
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chalkboard-user"></i></div>
+                <h3>Patient Dashboard</h3>
+                <p>Displays patient information, upcoming appointments, doctor messages, and provides tools to book new appointments seamlessly.</p>
+                <span class="highlight-badge"><i class="fas fa-calendar-alt"></i> Appointment history</span>
+            </div>
 
-</div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Doctor Dashboard</h3>
+                <p>Allows doctors to manage availability, view incoming patient requests, respond to messages, and maintain their professional calendar.</p>
+                <span class="highlight-badge"><i class="fas fa-clock"></i> Availability slots</span>
+            </div>
 
-<br>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-calendar-plus"></i></div>
+                <h3>Smart Appointment Booking</h3>
+                <p>Patients can select a doctor, choose an available time slot, submit medical information, and receive confirmation instantly.</p>
+                <span class="highlight-badge"><i class="fas fa-check-circle"></i> Real-time availability</span>
+            </div>
+        </div>
 
-<div class="dots">
+        <!-- Key Stats / Additional Info -->
+        <div style="background: linear-gradient(135deg, #e6f0fa, #f0f4f9); border-radius: 24px; padding: 1.5rem; margin: 2rem 0; text-align: center;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                <div>
+                    <i class="fas fa-users" style="font-size: 2rem; color: #1e4a6b;"></i>
+                    <h3 style="margin: 0.5rem 0 0;">2 User Roles</h3>
+                    <p style="font-size: 0.85rem;">Patient & Doctor</p>
+                </div>
+                <div>
+                    <i class="fas fa-calendar-week" style="font-size: 2rem; color: #1e4a6b;"></i>
+                    <h3 style="margin: 0.5rem 0 0;">Dynamic Scheduling</h3>
+                    <p style="font-size: 0.85rem;">Availability management</p>
+                </div>
+                <div>
+                    <i class="fas fa-database" style="font-size: 2rem; color: #1e4a6b;"></i>
+                    <h3 style="margin: 0.5rem 0 0;">PostgreSQL</h3>
+                    <p style="font-size: 0.85rem;">Scalable data storage</p>
+                </div>
+            </div>
+        </div>
 
-<span class="dot" onclick="currentSlide(1)"></span>
-<span class="dot" onclick="currentSlide(2)"></span>
-<span class="dot" onclick="currentSlide(3)"></span>
-<span class="dot" onclick="currentSlide(4)"></span>
-<span class="dot" onclick="currentSlide(5)"></span>
-<span class="dot" onclick="currentSlide(6)"></span>
-<span class="dot" onclick="currentSlide(7)"></span>
-<span class="dot" onclick="currentSlide(8)"></span>
-<span class="dot" onclick="currentSlide(9)"></span>
+        <hr>
+        <div class="footer-note">
+            <i class="fas fa-code"></i> Full-stack Django application • Role-based access control • Real-time appointment system
+        </div>
+    </div>
 
-</div>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
 
-<p>
-Home – Displays all available doctors so patients can quickly find medical professionals and begin booking appointments.
-</p>
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
 
-<p>
-Login – Authenticates both patients and doctors and directs them to their personalized dashboards.
-</p>
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            if (slides[slideIndex - 1]) {
+                slides[slideIndex - 1].style.display = "block";
+            }
+            if (dots[slideIndex - 1]) {
+                dots[slideIndex - 1].className += " active";
+            }
+        }
 
-<p>
-Registration – Allows both patients and doctors to create accounts by submitting essential personal and professional details.
-</p>
+        // Auto-slide functionality
+        let autoTimer;
+        function startAutoSlide() {
+            autoTimer = setInterval(() => {
+                plusSlides(1);
+            }, 6000);
+        }
+        function stopAutoSlide() {
+            clearInterval(autoTimer);
+        }
+        
+        const container = document.querySelector('.slideshow-container');
+        if (container) {
+            container.addEventListener('mouseenter', stopAutoSlide);
+            container.addEventListener('mouseleave', startAutoSlide);
+            startAutoSlide();
+        }
+    </script>
 
-<p>
-Patient Dashboard – Shows patient information, doctor messages, and provides tools to book new appointments.
-</p>
-
-<p>
-Doctor Dashboard – Allows doctors to manage availability, view patient requests, and respond to patient communications.
-</p>
-
-<p>
-Booking Appointment – Enables patients to select a doctor, schedule a visit, and submit relevant medical information.
-</p>
-
-</div>
-
-<script src="script.js"></script>
 </body>
+
 </html>
