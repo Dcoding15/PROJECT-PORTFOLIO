@@ -11,347 +11,359 @@
             box-sizing: border-box;
         }
 
-        /* ATS-safe: clean serif/sans fonts, no floats/grids for critical content? 
-           But using simple flex for container is fine, main content is linear block elements.
-           Print-optimized & screen friendly */
         body {
-            background-color: #e2e8f0;
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.45;
-            color: #0f172a;
+            background: #f1f4f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #1e293b;
             padding: 2rem 1rem;
         }
 
-        /* main card - plain white, no shadows interfering with readability */
         .resume {
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 0 auto;
-            background: white;
-            padding: 2rem 2.2rem;
-            border-radius: 0px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.2s;
         }
 
-        /* header section */
-        .header {
+        /* header area */
+        .resume-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 2.2rem 2.5rem;
             text-align: center;
-            margin-bottom: 1.6rem;
-            border-bottom: 2px solid #334155;
-            padding-bottom: 1.2rem;
+            color: white;
         }
+
         .name {
-            font-size: 2.2rem;
+            font-size: 2.6rem;
             font-weight: 700;
-            letter-spacing: -0.5px;
-            color: #0f172a;
-            margin-bottom: 0.3rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
         }
+
         .contact-info {
-            font-size: 0.95rem;
-            color: #1e293b;
-            margin-top: 0.4rem;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 0.5rem 1.2rem;
-        }
-        .contact-info span {
-            white-space: nowrap;
-        }
-        .separator {
-            color: #475569;
-        }
-        a {
-            color: #1e293b;
-            text-decoration: none;
-            border-bottom: 1px dotted #94a3b8;
-        }
-        a:hover {
-            color: #0f172a;
-            border-bottom: 1px solid #0f172a;
+            gap: 1rem 2rem;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            margin-top: 0.5rem;
         }
 
-        /* section styling */
-        .section {
-            margin-bottom: 1.5rem;
+        .contact-info a {
+            color: #facc15;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(250, 204, 21, 0.5);
         }
+
+        .contact-info a:hover {
+            color: #fde047;
+            border-bottom-color: #fde047;
+        }
+
+        .contact-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* main content */
+        .resume-content {
+            padding: 2rem 2.5rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
         .section-title {
             font-size: 1.3rem;
             font-weight: 700;
             color: #0f172a;
-            border-left: 5px solid #3b82f6;
-            padding-left: 0.8rem;
-            margin-bottom: 0.8rem;
-            margin-top: 0.2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #e2e8f0;
         }
-        /* simple block layout for ATS: no tables inside critical areas? tables for skills are okay,
-           but we can use simple flex-wrap list to be safe. Using inline lists and paragraphs */
-        .education-item, .cert-item, .workshop-item, .project-item {
-            margin-bottom: 0.8rem;
+
+        .section-title i {
+            color: #3b82f6;
+            font-size: 1.25rem;
         }
+
+        .summary-text {
+            background: #f8fafc;
+            padding: 1.2rem 1.5rem;
+            border-radius: 20px;
+            color: #1e293b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            border: 1px solid #eef2ff;
+        }
+
+        /* education */
+        .education-item {
+            margin-bottom: 1.2rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid #3b82f6;
+        }
+
         .edu-title {
-            font-weight: 700;
-            font-size: 1rem;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: baseline;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
         }
+
         .institution {
-            font-weight: 600;
-            color: #1e293b;
+            color: #0f172a;
         }
+
         .date {
-            font-weight: normal;
-            color: #475569;
-            font-size: 0.85rem;
+            font-weight: 400;
+            color: #64748b;
+            font-size: 0.8rem;
         }
+
         .edu-detail {
+            font-size: 0.9rem;
+            color: #475569;
             margin-top: 0.2rem;
-            font-size: 0.95rem;
-            color: #334155;
         }
-        .skills-container {
+
+        /* skills grid (modern badges) */
+        .skills-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem 1.5rem;
-            margin-top: 0.3rem;
+            gap: 1rem;
+            margin-top: 0.5rem;
         }
-        .skill-category {
-            flex: 1 1 220px;
+
+        .skill-badge {
+            background: #f1f5f9;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
         }
-        .skill-category strong {
-            display: block;
+
+        .skill-badge:hover {
+            background: #e6edf5;
+            border-color: #94a3b8;
+            transform: translateY(-1px);
+        }
+
+        .skill-category-title {
+            font-weight: 600;
+            margin: 1rem 0 0.5rem 0;
             font-size: 0.9rem;
-            margin-bottom: 0.25rem;
-            color: #0f172a;
-            border-bottom: 1px solid #cbd5e1;
-            padding-bottom: 0.2rem;
+            color: #334155;
+            letter-spacing: 0.3px;
         }
-        .skill-items {
-            font-size: 0.9rem;
-            color: #2d3a4f;
-            line-height: 1.4;
-            margin-top: 0.3rem;
-        }
+
+        /* lists */
         .list-compact {
             list-style: none;
             padding-left: 0;
         }
+
         .list-compact li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
+            padding-left: 1.2rem;
+            position: relative;
             font-size: 0.92rem;
-            padding-left: 0;
         }
-        .badge-light {
-            font-weight: 600;
+
+        .list-compact li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-size: 0.8rem;
         }
-        hr {
-            margin: 0.5rem 0;
-            border: 0;
-            height: 1px;
-            background: #e2e8f0;
+
+        .project-item {
+            background: #fefefe;
+            border-radius: 18px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+            border: 1px solid #eef2ff;
+            transition: all 0.2s;
         }
+
         .project-title {
             font-weight: 700;
-            font-size: 0.98rem;
-            margin-bottom: 0.2rem;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: #0f172a;
         }
+
         .project-desc {
-            font-size: 0.92rem;
-            color: #2c3e50;
-            margin-left: 0.2rem;
+            font-size: 0.88rem;
+            color: #475569;
         }
-        /* ensure print compatibility */
+
+        .additional-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            background: #f8fafc;
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            margin-top: 0.5rem;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: none;
+            border-top: 1px solid #eef2ff;
+        }
+
         @media print {
             body {
                 background: white;
                 padding: 0;
-                margin: 0;
             }
             .resume {
-                max-width: 100%;
-                padding: 0.3in;
                 box-shadow: none;
+                border-radius: 0;
             }
-            .contact-info {
-                font-size: 9pt;
-            }
-            .section-title {
-                font-size: 12pt;
-            }
-            a {
-                text-decoration: none;
-                border-bottom: none;
+            .resume-header {
+                background: #0f172a;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
         }
-        /* simple responsive */
+
         @media (max-width: 650px) {
-            .resume {
-                padding: 1.2rem;
+            .resume-content {
+                padding: 1.5rem;
+            }
+            .resume-header {
+                padding: 1.5rem;
+            }
+            .name {
+                font-size: 1.8rem;
             }
             .edu-title {
                 flex-direction: column;
-                margin-bottom: 0.2rem;
             }
-            .contact-info {
-                flex-direction: column;
-                gap: 0.2rem;
-                align-items: center;
-            }
-            .contact-info span {
-                white-space: normal;
-            }
-        }
-        .inline-code {
-            font-family: monospace;
-        }
-        .softskills {
-            margin-top: 0.5rem;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 <div class="resume">
-    <!-- HEADER with contact -->
-    <div class="header">
+    <div class="resume-header">
         <div class="name">DEBRISHI BISWAS</div>
         <div class="contact-info">
-            <span class="separator">|</span>
-            <span>+91-898-100-9109</span>
-            <span class="separator">|</span>
-            <span>debrishibiswas2003@gmail.com</span>
-            <span class="separator">|</span>
-            <span><a href="https://github.com/Dcoding15">Dcoding15</a></span>
+            <span><i class="fas fa-phone-alt"></i> +91-898-100-9109</span>
+            <span><i class="fas fa-envelope"></i> debrishibiswas2003@gmail.com</span>
+            <span><i class="fab fa-github"></i> <a href="https://github.com/Dcoding15">Dcoding15</a></span>
         </div>
     </div>
 
-    <!-- SUMMARY SECTION - ATS friendly keywords -->
-    <div class="section">
-        <div class="section-title">Professional Summary</div>
-        <p style="font-size:0.95rem; line-height:1.45; color:#1e293b;">I'm a student who genuinely enjoys building things with code — whether it's a web app, a machine learning model, or anything in between. I've picked up hands-on experience through internships and certifications in Python, Django, FastAPI, and ML tools like Scikit-Learn, PyTorch, and TensorFlow. I love solving problems, staying organized, and working with people. At the end of the day, I'm just someone who enjoys creating smart, useful solutions with clean, thoughtful code.</p>
-    </div>
+    <div class="resume-content">
+        <div class="section">
+            <div class="section-title"><i class="fas fa-user-astronaut"></i> Professional Summary</div>
+            <div class="summary-text">
+                I'm a student who genuinely enjoys building things with code — whether it's a web app, a machine learning model, or anything in between. I've picked up hands-on experience through internships and certifications in Python, Django, FastAPI, and ML tools like Scikit-Learn, PyTorch, and TensorFlow. I love solving problems, staying organized, and working with people. At the end of the day, I'm just someone who enjoys creating smart, useful solutions with clean, thoughtful code.
+            </div>
+        </div>
 
-    <!-- EDUCATION SECTION -->
-    <div class="section">
-        <div class="section-title">Education</div>
-        <div class="education-item">
-            <div class="edu-title">
-                <span class="institution">Master of Computer Applications (MCA)</span>
-                <span class="date">2024 – 2026</span>
+        <div class="section">
+            <div class="section-title"><i class="fas fa-graduation-cap"></i> Education</div>
+            <div class="education-item">
+                <div class="edu-title"><span class="institution">Master of Computer Applications (MCA)</span><span class="date">2024 – 2026</span></div>
+                <div class="edu-detail">Brainware University, West Bengal</div>
             </div>
-            <div class="edu-detail">Brainware University, West Bengal</div>
-        </div>
-        <div class="education-item">
-            <div class="edu-title">
-                <span class="institution">Bachelor of Computer Applications (BCA)</span>
-                <span class="date">2021 – 2024</span>
+            <div class="education-item">
+                <div class="edu-title"><span class="institution">Bachelor of Computer Applications (BCA)</span><span class="date">2021 – 2024</span></div>
+                <div class="edu-detail">Brainware University, West Bengal</div>
             </div>
-            <div class="edu-detail">Brainware University, West Bengal</div>
-        </div>
-        <div class="education-item">
-            <div class="edu-title">
-                <span class="institution">Class 12 (CBSE)</span>
-                <span class="date">2020 – 2021</span>
+            <div class="education-item">
+                <div class="edu-title"><span class="institution">Class 12 (CBSE)</span><span class="date">2020 – 2021</span></div>
+                <div class="edu-detail">Kendriya Vidyalaya No. 2, Salt Lake, Kolkata</div>
             </div>
-            <div class="edu-detail">Kendriya Vidyalaya No. 2, Salt Lake, Kolkata</div>
-        </div>
-        <div class="education-item">
-            <div class="edu-title">
-                <span class="institution">Class 10 (CBSE)</span>
-                <span class="date">2018 – 2019</span>
+            <div class="education-item">
+                <div class="edu-title"><span class="institution">Class 10 (CBSE)</span><span class="date">2018 – 2019</span></div>
+                <div class="edu-detail">Kendriya Vidyalaya No. 1, Port Blair</div>
             </div>
-            <div class="edu-detail">Kendriya Vidyalaya No. 1, Port Blair</div>
         </div>
-    </div>
 
-    <!-- TECHNICAL SKILLS (structured for ATS readability) -->
-    <div class="section">
-        <div class="section-title">Technical Skills</div>
-        <div class="skills-container">
-            <div class="skill-category">
-                <strong>Programming Languages</strong>
-                <div class="skill-items">C, C++, Python</div>
-            </div>
-            <div class="skill-category">
-                <strong>Web Frameworks</strong>
-                <div class="skill-items">Django, FastAPI</div>
-            </div>
-            <div class="skill-category">
-                <strong>ML & AI Frameworks</strong>
-                <div class="skill-items">Scikit-Learn, PyTorch, TensorFlow</div>
-            </div>
-            <div class="skill-category">
-                <strong>Databases</strong>
-                <div class="skill-items">PostgreSQL, SQLite, MongoDB</div>
-            </div>
-            <div class="skill-category">
-                <strong>Soft Skills</strong>
-                <div class="skill-items">Good Communication, Analytical Thinking, Time Management, Presentation Skills</div>
-            </div>
+        <div class="section">
+            <div class="section-title"><i class="fas fa-code"></i> Technical Skills</div>
+            <div class="skill-category-title">Programming Languages</div>
+            <div class="skills-grid"><span class="skill-badge">C</span><span class="skill-badge">C++</span><span class="skill-badge">Python</span></div>
+            <div class="skill-category-title">Web Frameworks</div>
+            <div class="skills-grid"><span class="skill-badge">Django</span><span class="skill-badge">FastAPI</span></div>
+            <div class="skill-category-title">ML & AI Frameworks</div>
+            <div class="skills-grid"><span class="skill-badge">Scikit-Learn</span><span class="skill-badge">PyTorch</span><span class="skill-badge">TensorFlow</span></div>
+            <div class="skill-category-title">Databases</div>
+            <div class="skills-grid"><span class="skill-badge">PostgreSQL</span><span class="skill-badge">SQLite</span><span class="skill-badge">MongoDB</span></div>
+            <div class="skill-category-title">Soft Skills</div>
+            <div class="skills-grid"><span class="skill-badge">Communication</span><span class="skill-badge">Analytical Thinking</span><span class="skill-badge">Time Management</span><span class="skill-badge">Presentation</span></div>
         </div>
-    </div>
 
-    <!-- CERTIFICATIONS -->
-    <div class="section">
-        <div class="section-title">Certifications</div>
-        <ul class="list-compact" style="list-style-type: disc; margin-left: 1.5rem;">
-            <li><strong>Mobile App Development Training</strong> – Naturava Health Solutions Pvt. Ltd. (2022)</li>
-            <li><strong>Machine Learning on Dimensionality Reduction</strong> – IBM (2025)</li>
-            <li><strong>Machine Learning Internship</strong> – Edgenius Skilled Mentor Pvt. Ltd. (2026)</li>
-        </ul>
-    </div>
-
-    <!-- WORKSHOPS & HACKATHONS - Important for ATS keyword density -->
-    <div class="section">
-        <div class="section-title">Workshops & Events</div>
-        <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1rem;">
-            <ul class="list-compact" style="list-style-type: disc; margin-left: 1.5rem; width: 100%;">
-                <li>Big Data Analytics in Healthcare – Naturava Health Solutions Pvt. Ltd. (2022)</li>
-                <li>Salesforce Basics – Brainware University (2022)</li>
-                <li>Internal Hackathon (Real Time Waste Management) – Brainware University (2022)</li>
-                <li>IoT-based Smart Entrance System – Brainware University (2022)</li>
-                <li>Enterprise Cloud – CSI &amp; IETE, Kolkata Chapters (2022)</li>
-                <li>Cyber Crime Investigation Techniques – Brainware University (2023)</li>
-                <li>TechTonic Workshop – Brainware University (2023)</li>
-                <li>Euphoria GneX Industry Visit – Brainware University (2024)</li>
-                <li>Neurons &amp; Tokens (ML, DL, LLMs &amp; Generative AI) – Brainware University (2025)</li>
-                <li>Internal Hackathon (Player Insights using Social Media) – Brainware University (2025)</li>
+        <div class="section">
+            <div class="section-title"><i class="fas fa-certificate"></i> Certifications</div>
+            <ul class="list-compact">
+                <li><strong>Mobile App Development Training</strong> – Naturava Health Solutions Pvt. Ltd. (2022)</li>
+                <li><strong>Machine Learning on Dimensionality Reduction</strong> – IBM (2025)</li>
+                <li><strong>Machine Learning Internship</strong> – Edgenius Skilled Mentor Pvt. Ltd. (2026)</li>
             </ul>
         </div>
-    </div>
 
-    <!-- PROJECTS SECTION (added to strengthen real-world application, as per ATS expectations) -->
-    <div class="section">
-        <div class="section-title">Projects</div>
-        <div class="project-item">
-            <div class="project-title">Infinity Hotel</div>
-            <div class="project-desc">A Django-based web app that combines luxury hospitality with efficient admin management. It has a futuristic “space-infinity” theme and helps streamline hotel operations.</div>
+        <div class="section">
+            <div class="section-title"><i class="fas fa-chalkboard-user"></i> Workshops & Events</div>
+            <ul class="list-compact" style="columns: 1; column-gap: 2rem;">
+                <li>Big Data Analytics in Healthcare – Naturava Health Solutions</li>
+                <li>Salesforce Basics – Brainware University</li>
+                <li>Internal Hackathon (Real Time Waste Management)</li>
+                <li>IoT-based Smart Entrance System</li>
+                <li>Enterprise Cloud – CSI & IETE Kolkata</li>
+                <li>Cyber Crime Investigation Techniques</li>
+                <li>TechTonic Workshop – Brainware University</li>
+                <li>Euphoria GneX Industry Visit</li>
+                <li>Neurons & Tokens (ML, DL, LLMs & Generative AI)</li>
+                <li>Internal Hackathon (Player Insights using Social Media)</li>
+            </ul>
         </div>
-        <div class="project-item" style="margin-top: 0.8rem;">
-            <div class="project-title">Doctor Booking System</div>
-            <div class="project-desc">A Django app that lets patients book appointments with doctors. Features include patient/doctor registration, secure login, and scheduling.</div>
-        </div>
-        <div class="project-item" style="margin-top: 0.8rem;">
-            <div class="project-title">Mini Project (Django)</div>
-            <div class="project-desc">A collection of small Django experiments. These show your growing comfort with Python and Django — from backend logic to simple web apps.</div>
-        </div>
-    </div>
 
-    <!-- Additional / Languages & Achievements -->
-    <div class="section">
-        <div class="section-title">Additional Information</div>
-        <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;">
-            <div style="min-width: 150px;">
-                <strong>Languages:</strong> English, Hindi, Bengali
+        <div class="section">
+            <div class="section-title"><i class="fas fa-laptop-code"></i> Projects</div>
+            <div class="project-item">
+                <div class="project-title">Infinity Hotel</div>
+                <div class="project-desc">A Django-based web app that combines luxury hospitality with efficient admin management. Futuristic “space-infinity” theme and streamlined hotel operations.</div>
             </div>
-            <div style="min-width: 180px;">
-                <strong>Availability:</strong> Immediate / Full-time opportunities
+            <div class="project-item">
+                <div class="project-title">Doctor Booking System</div>
+                <div class="project-desc">Django app for patient/doctor registration, secure login, appointment scheduling and role-based dashboards.</div>
             </div>
-            <div style="min-width: 200px;">
-                <strong>Interests:</strong> AI Ethics, Open Source, Hackathons, Cloud Computing
+            <div class="project-item">
+                <div class="project-title">Mini Project Suite (Django)</div>
+                <div class="project-desc">Collection of small Django experiments: Tic Tac Toe, TODO manager, mail sender — covering backend logic and interactive web apps.</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title"><i class="fas fa-globe"></i> Additional Information</div>
+            <div class="additional-info">
+                <div><i class="fas fa-language"></i> <strong>Languages:</strong> English, Hindi, Bengali</div>
+                <div><i class="fas fa-clock"></i> <strong>Availability:</strong> Immediate / Full-time opportunities</div>
+                <div><i class="fas fa-heart"></i> <strong>Interests:</strong> AI Ethics, Open Source, Hackathons, Cloud Computing</div>
             </div>
         </div>
     </div>
