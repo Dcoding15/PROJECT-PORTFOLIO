@@ -1,372 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Debrishi Biswas - CV</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Debrishi Biswas — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --ink:#1a1a2e;
+    --ink2:#3d3d5c;
+    --ink3:#6b6b8a;
+    --accent:#4f46e5;
+    --accent2:#818cf8;
+    --surface:#f8f7ff;
+    --line:rgba(79,70,229,0.15);
+    --white:#fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:#eeedf5;
+    padding:40px 20px;
+    font-family:'Outfit',sans-serif;
+    color:var(--ink);
+  }
+  .cv{
+    max-width:860px;
+    margin:0 auto;
+    background:var(--white);
+    box-shadow:0 8px 40px rgba(79,70,229,0.10);
+    border-radius:4px;
+    overflow:hidden;
+  }
 
-        body {
-            background: #f1f4f9;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.5;
-            color: #1e293b;
-            padding: 2rem 1rem;
-        }
+  /* HEADER */
+  .cv-header{
+    background:var(--ink);
+    padding:48px 56px 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cv-header::before{
+    content:'';
+    position:absolute;
+    top:-60px;right:-60px;
+    width:220px;height:220px;
+    border-radius:50%;
+    border:1px solid rgba(129,140,248,0.18);
+  }
+  .cv-header::after{
+    content:'';
+    position:absolute;
+    bottom:-80px;right:40px;
+    width:160px;height:160px;
+    border-radius:50%;
+    border:1px solid rgba(129,140,248,0.10);
+  }
+  .header-name{
+    font-family:'DM Serif Display',serif;
+    font-size:52px;
+    font-weight:400;
+    color:#fff;
+    letter-spacing:-1px;
+    line-height:1;
+  }
+  .header-role{
+    font-size:13px;
+    font-weight:500;
+    color:var(--accent2);
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-top:10px;
+  }
+  .header-contact{
+    display:flex;
+    gap:28px;
+    margin-top:20px;
+    flex-wrap:wrap;
+  }
+  .contact-item{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:13px;
+    color:rgba(255,255,255,0.65);
+    font-family:'DM Mono',monospace;
+    text-decoration:none;
+  }
+  .contact-item svg{
+    width:14px;height:14px;
+    stroke:var(--accent2);
+    fill:none;
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    flex-shrink:0;
+  }
 
-        .resume {
-            max-width: 1050px;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 32px;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            transition: all 0.2s;
-        }
+  /* BODY */
+  .cv-body{
+    display:grid;
+    grid-template-columns:1fr 280px;
+  }
+  .main-col{
+    padding:44px 48px 44px 56px;
+    border-right:1px solid var(--line);
+  }
+  .side-col{
+    padding:44px 36px;
+    background:var(--surface);
+  }
 
-        /* header area */
-        .resume-header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 2.2rem 2.5rem;
-            text-align: center;
-            color: white;
-        }
+  /* SECTIONS */
+  .section{margin-bottom:38px}
+  .section-label{
+    font-family:'DM Mono',monospace;
+    font-size:10px;
+    font-weight:500;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .section-label::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
 
-        .name {
-            font-size: 2.6rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-        }
+  /* SUMMARY */
+  .summary-text{
+    font-size:14.5px;
+    line-height:1.85;
+    color:var(--ink2);
+  }
 
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem 2rem;
-            font-size: 0.9rem;
-            color: #e2e8f0;
-            margin-top: 0.5rem;
-        }
+  /* EXPERIENCE */
+  .job-item{
+    margin-bottom:26px;
+    padding-bottom:26px;
+    border-bottom:1px solid var(--line);
+  }
+  .job-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .job-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:3px;
+  }
+  .job-title{font-size:15px;font-weight:600;color:var(--ink)}
+  .job-date{
+    font-family:'DM Mono',monospace;
+    font-size:11px;
+    color:var(--ink3);
+    white-space:nowrap;
+    padding-top:2px;
+  }
+  .job-org{
+    font-size:13px;
+    color:var(--accent);
+    font-weight:500;
+    margin-bottom:10px;
+  }
+  .job-bullets{list-style:none}
+  .job-bullets li{
+    font-size:13.5px;
+    color:var(--ink2);
+    line-height:1.7;
+    padding-left:16px;
+    position:relative;
+    margin-bottom:4px;
+  }
+  .job-bullets li::before{
+    content:'—';
+    position:absolute;left:0;
+    color:var(--accent2);
+    font-size:12px;
+  }
 
-        .contact-info a {
-            color: #facc15;
-            text-decoration: none;
-            border-bottom: 1px dotted rgba(250, 204, 21, 0.5);
-        }
+  /* PROJECTS */
+  .proj-item{margin-bottom:22px}
+  .proj-item:last-child{margin-bottom:0}
+  .proj-name{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px}
+  .proj-stack{
+    font-family:'DM Mono',monospace;
+    font-size:10.5px;
+    color:var(--accent);
+    margin-bottom:6px;
+  }
+  .proj-desc{font-size:13px;color:var(--ink2);line-height:1.72}
 
-        .contact-info a:hover {
-            color: #fde047;
-            border-bottom-color: #fde047;
-        }
+  /* EDUCATION */
+  .edu-item{margin-bottom:20px}
+  .edu-item:last-child{margin-bottom:0}
+  .edu-degree{font-size:13.5px;font-weight:600;color:var(--ink)}
+  .edu-school{font-size:12.5px;color:var(--ink2);margin-top:2px}
+  .edu-date{
+    font-family:'DM Mono',monospace;
+    font-size:10.5px;
+    color:var(--ink3);
+    margin-top:2px;
+  }
 
-        .contact-info span {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
+  /* SKILLS */
+  .skill-group{margin-bottom:16px}
+  .skill-group:last-child{margin-bottom:0}
+  .skill-group-name{
+    font-size:10.5px;
+    font-weight:500;
+    color:var(--ink3);
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:7px;
+  }
+  .skill-tags{display:flex;flex-wrap:wrap;gap:5px}
+  .tag{
+    font-size:11.5px;
+    background:var(--white);
+    border:1px solid var(--line);
+    color:var(--ink2);
+    padding:3px 10px;
+    border-radius:4px;
+    font-family:'DM Mono',monospace;
+  }
+  .tag.soft{background:transparent}
 
-        /* main content */
-        .resume-content {
-            padding: 2rem 2.5rem;
-        }
+  /* CERTIFICATIONS */
+  .cert-item{margin-bottom:13px}
+  .cert-item:last-child{margin-bottom:0}
+  .cert-name{font-size:13px;font-weight:500;color:var(--ink)}
+  .cert-org{font-size:11.5px;color:var(--ink3);margin-top:1px}
 
-        .section {
-            margin-bottom: 2rem;
-        }
+  /* LANGUAGES */
+  .lang-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:11px;
+  }
+  .lang-name{font-size:13px;color:var(--ink2)}
+  .lang-dots{display:flex;gap:4px}
+  .dot{width:8px;height:8px;border-radius:50%;background:rgba(79,70,229,0.12)}
+  .dot.filled{background:var(--accent)}
 
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid #e2e8f0;
-        }
-
-        .section-title i {
-            color: #3b82f6;
-            font-size: 1.25rem;
-        }
-
-        .summary-text {
-            background: #f8fafc;
-            padding: 1.2rem 1.5rem;
-            border-radius: 20px;
-            color: #1e293b;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            border: 1px solid #eef2ff;
-        }
-
-        /* education */
-        .education-item {
-            margin-bottom: 1.2rem;
-            padding-left: 0.5rem;
-            border-left: 3px solid #3b82f6;
-        }
-
-        .edu-title {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: baseline;
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .institution {
-            color: #0f172a;
-        }
-
-        .date {
-            font-weight: 400;
-            color: #64748b;
-            font-size: 0.8rem;
-        }
-
-        .edu-detail {
-            font-size: 0.9rem;
-            color: #475569;
-            margin-top: 0.2rem;
-        }
-
-        /* skills grid (modern badges) */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-
-        .skill-badge {
-            background: #f1f5f9;
-            padding: 0.4rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #1e293b;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s;
-        }
-
-        .skill-badge:hover {
-            background: #e6edf5;
-            border-color: #94a3b8;
-            transform: translateY(-1px);
-        }
-
-        .skill-category-title {
-            font-weight: 600;
-            margin: 1rem 0 0.5rem 0;
-            font-size: 0.9rem;
-            color: #334155;
-            letter-spacing: 0.3px;
-        }
-
-        /* lists */
-        .list-compact {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .list-compact li {
-            margin-bottom: 0.6rem;
-            padding-left: 1.2rem;
-            position: relative;
-            font-size: 0.92rem;
-        }
-
-        .list-compact li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: #3b82f6;
-            font-size: 0.8rem;
-        }
-
-        .project-item {
-            background: #fefefe;
-            border-radius: 18px;
-            padding: 1rem 1.2rem;
-            margin-bottom: 1rem;
-            border: 1px solid #eef2ff;
-            transition: all 0.2s;
-        }
-
-        .project-title {
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
-            color: #0f172a;
-        }
-
-        .project-desc {
-            font-size: 0.88rem;
-            color: #475569;
-        }
-
-        .additional-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            background: #f8fafc;
-            padding: 1rem 1.5rem;
-            border-radius: 20px;
-            margin-top: 0.5rem;
-        }
-
-        hr {
-            margin: 1rem 0;
-            border: none;
-            border-top: 1px solid #eef2ff;
-        }
-
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            .resume {
-                box-shadow: none;
-                border-radius: 0;
-            }
-            .resume-header {
-                background: #0f172a;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-        }
-
-        @media (max-width: 650px) {
-            .resume-content {
-                padding: 1.5rem;
-            }
-            .resume-header {
-                padding: 1.5rem;
-            }
-            .name {
-                font-size: 1.8rem;
-            }
-            .edu-title {
-                flex-direction: column;
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  /* PRINT */
+  @media print{
+    body{background:white;padding:0}
+    .cv{box-shadow:none;border-radius:0}
+  }
+  @media(max-width:680px){
+    .cv-body{grid-template-columns:1fr}
+    .main-col{padding:32px 28px;border-right:none;border-bottom:1px solid var(--line)}
+    .side-col{padding:32px 28px}
+    .cv-header{padding:36px 28px 32px}
+    .header-name{font-size:38px}
+  }
+</style>
 </head>
 <body>
-<div class="resume">
-    <div class="resume-header">
-        <div class="name">DEBRISHI BISWAS</div>
-        <div class="contact-info">
-            <span><i class="fas fa-phone-alt"></i> +91-898-100-9109</span>
-            <span><i class="fas fa-envelope"></i> debrishibiswas2003@gmail.com</span>
-            <span><i class="fab fa-github"></i> <a href="https://github.com/Dcoding15">Dcoding15</a></span>
+
+<div class="cv">
+
+  <!-- HEADER -->
+  <div class="cv-header">
+    <div class="header-name">Debrishi<br>Biswas</div>
+    <div class="header-role">Teaching Assistant</div>
+    <div class="header-contact">
+      <a class="contact-item" href="mailto:debrishibiswas2003@gmail.com">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        debrishibiswas2003@gmail.com
+      </a>
+      <span class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.08 4.18 2 2 0 0 1 5.07 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91 89810 09109
+      </span>
+      <span class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Kolkata, West Bengal, India
+      </span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="cv-body">
+
+    <!-- MAIN COLUMN -->
+    <div class="main-col">
+
+      <div class="section">
+        <div class="section-label">Professional Summary</div>
+        <p class="summary-text">Beginner MCA candidate with foundational experience in full-stack web development and machine learning. Familiar with Python, Django, FastAPI, PyTorch, and TensorFlow, with hands-on experience building academic and personal projects involving REST APIs, SQL/NoSQL databases, and predictive models. Eager to apply analytical, problem-solving, and communication skills in real-world software and AI development environments. Teaching Assistant experience has helped strengthen collaboration, mentoring, and technical communication abilities.
+        </p>
+      </div>
+
+      <!-- <div class="section">
+        <div class="section-label">Experience</div>
+          
+          <div class="job-header">
+            <div class="job-title"></div>
+            <div class="job-date"></div>
+          </div>
+          <div class="job-org"></div>
+
+      </div> -->
+
+      <div class="section">
+        <div class="section-label">Projects</div>
+
+        <div class="proj-item">
+          <div class="proj-name">Hotel Infinity — Hotel Booking System</div>
+          <div class="proj-stack">Django REST Framework · React · Vite · PostgreSQL</div>
+          <div class="proj-desc">Full-stack hotel booking platform with room management, online payment integration, and a responsive UI. Implemented REST APIs for booking workflows and user authentication.</div>
         </div>
+
+        <div class="proj-item">
+          <div class="proj-name">Doctor Booking System — Healthcare Appointment Platform (Ongoing)</div>
+          <div class="proj-stack">Django · React.js · Vite · SQLite</div>
+          <div class="proj-desc">Web application enabling patients to book doctor appointments online. Features doctor schedule management, appointment tracking, and patient request handling dashboards.</div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-name">American Sign Language Recognition — Comparative Analysis of Video Action Recognition Models</div>
+          <div class="proj-stack">Python · OpenCV · PyTorch · Yolo-v11 · Matplotlib</div>
+          <div class="proj-desc">Comparative analysis of 7 video action recognition models (CNN3D, TCN, ViT, CNN-LSTM, Two-Stream, BiLSTM, BiLSTM-Attention) focusing on architectures, parameter counts, weight distributions, and training/test accuracy trends over 50 epochs.</div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-name">AI Share Trend Analyzer — Stock Market Prediction</div>
+          <div class="proj-stack">Python · FastAPI · React.js · Vite · Ollama(llama3.2) · PostgreSQL</div>
+          <div class="proj-desc">ML-powered stock market analysis tool that generates trend predictions, visualizes historical data, and surfaces actionable signals using trained predictive models.</div>
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="resume-content">
-        <div class="section">
-            <div class="section-title"><i class="fas fa-user-astronaut"></i> Professional Summary</div>
-            <div class="summary-text">
-                I'm a student who genuinely enjoys building things with code — whether it's a web app, a machine learning model, or anything in between. I've picked up hands-on experience through internships and certifications in Python, Django, FastAPI, and ML tools like Scikit-Learn, PyTorch, and TensorFlow. I love solving problems, staying organized, and working with people. At the end of the day, I'm just someone who enjoys creating smart, useful solutions with clean, thoughtful code.
-            </div>
-        </div>
+    <!-- SIDE COLUMN -->
+    <div class="side-col">
 
-        <div class="section">
-            <div class="section-title"><i class="fas fa-graduation-cap"></i> Education</div>
-            <div class="education-item">
-                <div class="edu-title"><span class="institution">Master of Computer Applications (MCA)</span><span class="date">2024 – 2026</span></div>
-                <div class="edu-detail">Brainware University, West Bengal</div>
-            </div>
-            <div class="education-item">
-                <div class="edu-title"><span class="institution">Bachelor of Computer Applications (BCA)</span><span class="date">2021 – 2024</span></div>
-                <div class="edu-detail">Brainware University, West Bengal</div>
-            </div>
-            <div class="education-item">
-                <div class="edu-title"><span class="institution">Class 12 (CBSE)</span><span class="date">2020 – 2021</span></div>
-                <div class="edu-detail">Kendriya Vidyalaya No. 2, Salt Lake, Kolkata</div>
-            </div>
-            <div class="education-item">
-                <div class="edu-title"><span class="institution">Class 10 (CBSE)</span><span class="date">2018 – 2019</span></div>
-                <div class="edu-detail">Kendriya Vidyalaya No. 1, Port Blair</div>
-            </div>
+      <div class="section">
+        <div class="section-label">Education</div>
+        <div class="edu-item">
+          <div class="edu-degree">Master of Computer Applications</div>
+          <div class="edu-school">Brainware University, Barasat</div>
+          <div class="edu-date">Jun 2024 — May 2026</div>
         </div>
+        <div class="edu-item">
+          <div class="edu-degree">Bachelor of Computer Applications</div>
+          <div class="edu-school">Brainware University, Barasat</div>
+          <div class="edu-date">Aug 2021 — Jun 2024</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Class 12 — CBSE</div>
+          <div class="edu-school">Kendriya Vidyalaya No. 2, Salt Lake</div>
+          <div class="edu-date">Apr 2020 — Mar 2021</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Class 10 — CBSE</div>
+          <div class="edu-school">Kendriya Vidyalaya No. 1, Port Blair</div>
+          <div class="edu-date">Apr 2018 — Mar 2019</div>
+        </div>
+      </div>
 
-        <div class="section">
-            <div class="section-title"><i class="fas fa-code"></i> Technical Skills</div>
-            <div class="skill-category-title">Programming Languages</div>
-            <div class="skills-grid"><span class="skill-badge">C</span><span class="skill-badge">C++</span><span class="skill-badge">Python</span></div>
-            <div class="skill-category-title">Web Frameworks</div>
-            <div class="skills-grid"><span class="skill-badge">Django</span><span class="skill-badge">FastAPI</span></div>
-            <div class="skill-category-title">ML & AI Frameworks</div>
-            <div class="skills-grid"><span class="skill-badge">Scikit-Learn</span><span class="skill-badge">PyTorch</span><span class="skill-badge">TensorFlow</span></div>
-            <div class="skill-category-title">Databases</div>
-            <div class="skills-grid"><span class="skill-badge">PostgreSQL</span><span class="skill-badge">SQLite</span><span class="skill-badge">MongoDB</span></div>
-            <div class="skill-category-title">Soft Skills</div>
-            <div class="skills-grid"><span class="skill-badge">Communication</span><span class="skill-badge">Analytical Thinking</span><span class="skill-badge">Time Management</span><span class="skill-badge">Presentation</span></div>
+      <div class="section">
+        <div class="section-label">Technical Skills</div>
+        <div class="skill-group">
+          <div class="skill-group-name">Languages</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">C</span>
+            <span class="tag">C++</span>
+          </div>
         </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Frameworks</div>
+          <div class="skill-tags">
+            <span class="tag">Django</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">React</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">ML / AI</div>
+          <div class="skill-tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">Scikit-Learn</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Databases</div>
+          <div class="skill-tags">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">MongoDB</span>
+          </div>
+        </div>
+      </div>
 
-        <div class="section">
-            <div class="section-title"><i class="fas fa-certificate"></i> Certifications</div>
-            <ul class="list-compact">
-                <li><strong>Mobile App Development Training</strong> – Naturava Health Solutions Pvt. Ltd. (2022)</li>
-                <li><strong>Machine Learning on Dimensionality Reduction</strong> – IBM (2025)</li>
-                <li><strong>Machine Learning Internship</strong> – Edgenius Skilled Mentor Pvt. Ltd. (2026)</li>
-            </ul>
+      <div class="section">
+        <div class="section-label">Certifications</div>
+        <div class="cert-item">
+          <div class="cert-name">Machine Learning on Dimensionality Reduction</div>
+          <div class="cert-org">IBM · 2025</div>
         </div>
+        <div class="cert-item">
+          <div class="cert-name">Software Development Internship</div>
+          <div class="cert-org">Edgenius Skilled Mentor Pvt. Ltd. · 2026</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Mobile App Development Training</div>
+          <div class="cert-org">Naturava Health Solutions · 2022</div>
+        </div>
+      </div>
 
-        <div class="section">
-            <div class="section-title"><i class="fas fa-chalkboard-user"></i> Workshops & Events</div>
-            <ul class="list-compact" style="columns: 1; column-gap: 2rem;">
-                <li>Big Data Analytics in Healthcare – Naturava Health Solutions</li>
-                <li>Salesforce Basics – Brainware University</li>
-                <li>Internal Hackathon (Real Time Waste Management)</li>
-                <li>IoT-based Smart Entrance System</li>
-                <li>Enterprise Cloud – CSI & IETE Kolkata</li>
-                <li>Cyber Crime Investigation Techniques</li>
-                <li>TechTonic Workshop – Brainware University</li>
-                <li>Euphoria GneX Industry Visit</li>
-                <li>Neurons & Tokens (ML, DL, LLMs & Generative AI)</li>
-                <li>Internal Hackathon (Player Insights using Social Media)</li>
-            </ul>
+      <div class="section">
+        <div class="section-label">Languages</div>
+        <div class="lang-item">
+          <span class="lang-name">Bengali</span>
+          <div class="lang-dots">
+            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+          </div>
         </div>
+        <div class="lang-item">
+          <span class="lang-name">English</span>
+          <div class="lang-dots">
+            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span>
+          </div>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Hindi</span>
+          <div class="lang-dots">
+            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span>
+          </div>
+        </div>
+      </div>
 
-        <div class="section">
-            <div class="section-title"><i class="fas fa-laptop-code"></i> Projects</div>
-            <div class="project-item">
-                <div class="project-title">Infinity Hotel</div>
-                <div class="project-desc">A Django-based web app that combines luxury hospitality with efficient admin management. Futuristic “space-infinity” theme and streamlined hotel operations.</div>
-            </div>
-            <div class="project-item">
-                <div class="project-title">Doctor Booking System</div>
-                <div class="project-desc">Django app for patient/doctor registration, secure login, appointment scheduling and role-based dashboards.</div>
-            </div>
-            <div class="project-item">
-                <div class="project-title">Mini Project Suite (Django)</div>
-                <div class="project-desc">Collection of small Django experiments: Tic Tac Toe, TODO manager, mail sender — covering backend logic and interactive web apps.</div>
-            </div>
+      <div class="section">
+        <div class="section-label">Soft Skills</div>
+        <div class="skill-tags" style="flex-direction:column;gap:6px">
+          <span class="tag soft">Communication</span>
+          <span class="tag soft">Analytical Thinking</span>
+          <span class="tag soft">Time Management</span>
+          <span class="tag soft">Presentation Skills</span>
         </div>
+      </div>
 
-        <div class="section">
-            <div class="section-title"><i class="fas fa-globe"></i> Additional Information</div>
-            <div class="additional-info">
-                <div><i class="fas fa-language"></i> <strong>Languages:</strong> English, Hindi, Bengali</div>
-                <div><i class="fas fa-clock"></i> <strong>Availability:</strong> Immediate / Full-time opportunities</div>
-                <div><i class="fas fa-heart"></i> <strong>Interests:</strong> AI Ethics, Open Source, Hackathons, Cloud Computing</div>
-            </div>
-        </div>
     </div>
+  </div>
 </div>
+
 </body>
 </html>
