@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Management System | Debrishi Biswas</title>
+    <title>Hotel Infinity | Full-Stack Booking System</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -399,56 +399,57 @@
 
     <div class="container">
         <div class="project-header">
-            <h1>🏨 Hotel Management System</h1>
+            <h1>🏨 Hotel Infinity | Full‑Stack Booking System</h1>
             <div class="meta">
-                <span><i class="fas fa-calendar-alt"></i> June 28, 2024</span>
-                <span><i class="fas fa-code-branch"></i> Full-stack project</span>
-                <span><i class="fas fa-users"></i> Role-based access (Admin / Customer)</span>
+                <span><i class="fas fa-calendar-alt"></i> April 2025</span>
+                <span><i class="fas fa-code-branch"></i> Full‑stack project</span>
+                <span><i class="fas fa-users"></i> Role‑based access (Admin / Customer)</span>
+                <span><i class="fas fa-credit-card"></i> Razorpay Integration</span>
             </div>
             <div class="tech-stack">
                 <span class="tech-tag"><i class="fab fa-python"></i> Django</span>
-                <span class="tech-tag"><i class="fas fa-database"></i> SQLite</span>
-                <span class="tech-tag"><i class="fab fa-html5"></i> HTML5</span>
-                <span class="tech-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
-                <span class="tech-tag"><i class="fab fa-js"></i> JavaScript</span>
-                <span class="tech-tag"><i class="fas fa-lock"></i> Auth system</span>
+                <span class="tech-tag"><i class="fab fa-react"></i> React</span>
+                <span class="tech-tag"><i class="fas fa-database"></i> SQLite / PostgreSQL</span>
+                <span class="tech-tag"><i class="fas fa-lock"></i> JWT Auth</span>
+                <span class="tech-tag"><i class="fas fa-credit-card"></i> Razorpay</span>
+                <span class="tech-tag"><i class="fab fa-css3-alt"></i> CSS Modules</span>
             </div>
             <div class="action-buttons">
-                <a href="#" class="btn btn-primary" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo (coming soon)</a>
+                <a href="#" class="btn btn-primary" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo (soon)</a>
                 <a href="https://github.com/Dcoding15/Infinity-Hotel.git" class="btn btn-outline" target="_blank"><i class="fab fa-github"></i> View Source Code</a>
             </div>
         </div>
 
-        <!-- Slideshow -->
+        <!-- Slideshow (updated descriptions to match actual features) -->
         <div class="slideshow-container">
             <div class="mySlides fade">
                 <div class="numbertext">1 / 5</div>
-                <img src="images/hotel1.png" alt="Hotel Homepage">
-                <div class="text">🏠 Home Page – Visitor inquiries & feedback</div>
+                <img src="images/hotel1.png" alt="Room listing with date filters">
+                <div class="text">🛏️ Rooms Page – Browse with check‑in/out & filters</div>
             </div>
 
             <div class="mySlides fade">
                 <div class="numbertext">2 / 5</div>
-                <img src="images/hotel2.png" alt="Hotel Highlights">
-                <div class="text">🌟 Home Page – Highlights & amenities</div>
+                <img src="images/hotel2.png" alt="My Bookings with cancel/pay buttons">
+                <div class="text">📋 My Bookings – View, cancel, or pay for confirmed stays</div>
             </div>
 
             <div class="mySlides fade">
                 <div class="numbertext">3 / 5</div>
-                <img src="images/hotel3.png" alt="Registration Page">
-                <div class="text">📝 Registration – Booking & auto room assignment</div>
+                <img src="images/hotel3.png" alt="Razorpay checkout">
+                <div class="text">💳 Online Payments – Razorpay integration (test/live)</div>
             </div>
 
             <div class="mySlides fade">
                 <div class="numbertext">4 / 5</div>
-                <img src="images/hotel4.png" alt="Admin Login">
-                <div class="text">🔐 Admin Login – Secure gateway for staff</div>
+                <img src="images/hotel4.png" alt="Admin dashboard">
+                <div class="text">📊 Admin Dashboard – Manage rooms, bookings, customers</div>
             </div>
 
             <div class="mySlides fade">
                 <div class="numbertext">5 / 5</div>
-                <img src="images/hotel5.png" alt="Customer Dashboard">
-                <div class="text">📊 Customer Dashboard – Manage bookings & records</div>
+                <img src="images/hotel5.png" alt="Payment management">
+                <div class="text">💰 Payment Management – Mark paid/refunded, auto‑cancel on refund</div>
             </div>
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -463,64 +464,64 @@
             <span class="dot" onclick="currentSlide(5)"></span>
         </div>
 
-        <!-- Feature Cards -->
+        <!-- Feature Cards (updated) -->
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-home"></i></div>
-                <h3>Home & Inquiries</h3>
-                <p>Main entry interface that captures visitor inquiries and feedback, creating a communication bridge between users and the system.</p>
+                <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                <h3>Date‑based Availability</h3>
+                <p>Select check‑in/out dates – only rooms free for the entire period are shown. Overlapping bookings are automatically excluded.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
-                <h3>Smart Registration</h3>
-                <p>Handles user booking details and automatically assigns rooms while storing reservation data securely.</p>
+                <div class="feature-icon"><i class="fas fa-credit-card"></i></div>
+                <h3>Razorpay Integration</h3>
+                <p>Secure online payments via card, UPI, or netbanking. Webhook updates payment status and confirms bookings instantly.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
-                <h3>Booking Confirmation</h3>
-                <p>Displays the assigned room number and hotel information once the booking process is completed.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
-                <h3>Admin Panel</h3>
-                <p>Secure authentication gateway that allows authorized administrators to access system controls and manage operations.</p>
+                <div class="feature-icon"><i class="fas fa-star"></i></div>
+                <h3>Customer Reviews</h3>
+                <p>After a confirmed stay, users can leave ratings & reviews. Each room displays its average rating.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-chalkboard-user"></i></div>
-                <h3>Customer Dashboard</h3>
-                <p>Centralized view of guest records and booking activities for efficient management.</p>
+                <h3>Admin Dashboard</h3>
+                <p>Full control: create/edit rooms, confirm/cancel any booking, manage customers, and handle payment statuses.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                <h3>Auto‑Cancel on Refund</h3>
+                <p>When admin refunds a payment, the linked booking is automatically cancelled – no manual steps needed.</p>
             </div>
         </div>
 
-        <!-- Stats Section -->
+        <!-- Stats Section (updated metrics) -->
         <div class="stats-section">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-icon"><i class="fas fa-bed"></i></div>
-                    <h4>Auto Room Assignment</h4>
-                    <p>Intelligent room allocation</p>
+                    <div class="stat-icon"><i class="fas fa-lock"></i></div>
+                    <h4>JWT Authentication</h4>
+                    <p>Secure token‑based auth</p>
                 </div>
                 <div class="stat-item">
                     <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
-                    <h4>Real-time Dashboard</h4>
-                    <p>Live booking updates</p>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h4>Secure Auth</h4>
-                    <p>Role-based access control</p>
+                    <h4>Real‑time Dashboard</h4>
+                    <p>Admin analytics & filters</p>
                 </div>
                 <div class="stat-item">
                     <div class="stat-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <h4>Fully Responsive</h4>
-                    <p>Works on all devices</p>
+                    <h4>Responsive React UI</h4>
+                    <p>Desktop / tablet / mobile</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-credit-card"></i></div>
+                    <h4>Razorpay Ready</h4>
+                    <p>Test & production mode</p>
                 </div>
             </div>
         </div>
 
         <hr>
         <div class="footer-note">
-            <i class="fas fa-code"></i> Built with Django • Fully responsive • Role-based authentication • SQLite Database
+            <i class="fas fa-code"></i> Built with Django REST Framework + React • JWT authentication • Razorpay payments • Fully responsive design
         </div>
     </div>
 
