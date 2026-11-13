@@ -1,447 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Debrishi Biswas - GenAI Web Developer</title>
-<meta name="description" content="Debrishi Biswas's portfolio showcasing web applications including Hotel Management System, Doctor Booking App, and interactive mini-projects built with Django.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/jpeg" href="images/favicon.jpg">
-<meta property="og:title" content="Debrishi Biswas - Academic Associate Portfolio">
-<meta property="og:description" content="Full-stack Django projects: Hotel Management, Doctor Booking, Tic Tac Toe, TODO Task Manager, and more.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://dcoding15.github.io/PROJECT-PORTFOLIO/">
-<meta property="og:image" content="images/favicon.jpg">
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-
-<!-- Font Awesome 6 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
-
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Inter', sans-serif;
-        background: linear-gradient(135deg, #f8fafc 0%, #eef2f6 100%);
-        color: #0f172a;
-        line-height: 1.5;
-        min-height: 100vh;
-    }
-
-    /* About Me Button */
-    .about-btn {
-        position: fixed;
-        top: 1.5rem;
-        right: 1.5rem;
-        z-index: 100;
-        transition: transform 0.2s ease;
-    }
-
-    .about-btn:hover {
-        transform: scale(1.05) translateY(-2px);
-    }
-
-    .about-img {
-        width: 52px;
-        height: 52px;
-        border-radius: 60px;
-        object-fit: cover;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        border: 3px solid white;
-        transition: box-shadow 0.2s;
-    }
-
-    .about-img:hover {
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    /* Main Container */
-    .container {
-        max-width: 1300px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem 4rem;
-    }
-
-    /* Header Section */
-    .hero {
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-
-    .hero h1 {
-        font-size: 3rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, #0f172a, #2d3a5e);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        letter-spacing: -0.02em;
-        margin-bottom: 1rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.1rem;
-        color: #475569;
-        max-width: 700px;
-        margin: 0 auto 1.5rem;
-    }
-
-    /* Tech Stack Pills */
-    .tech-pills {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.75rem;
-        margin-bottom: 2rem;
-    }
-
-    .pill {
-        background: white;
-        padding: 0.4rem 1rem;
-        border-radius: 40px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: #1e4a6b;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        border: 1px solid #e2e8f0;
-    }
-
-    .pill i {
-        margin-right: 0.4rem;
-        font-size: 0.8rem;
-    }
-
-    /* Search Bar */
-    .search-container {
-        max-width: 500px;
-        margin: 0 auto 2.5rem;
-        position: relative;
-    }
-
-    .search-container i {
-        position: absolute;
-        left: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #94a3b8;
-        font-size: 1rem;
-    }
-
-    #searchInput {
-        width: 100%;
-        padding: 0.9rem 1rem 0.9rem 2.8rem;
-        font-size: 1rem;
-        font-family: 'Inter', sans-serif;
-        border: 1px solid #e2e8f0;
-        border-radius: 60px;
-        background: white;
-        transition: all 0.2s;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-
-    #searchInput:focus {
-        outline: none;
-        border-color: #1e4a6b;
-        box-shadow: 0 4px 15px rgba(30, 74, 107, 0.1);
-    }
-
-    /* Projects Grid */
-    .projects {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-        gap: 2rem;
-        margin-top: 1rem;
-    }
-
-    .card {
-        background: white;
-        border-radius: 28px;
-        overflow: hidden;
-        text-decoration: none;
-        transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-        border: 1px solid #eef2f6;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card:hover {
-        transform: translateY(-6px);
-        border-color: #cbd5e1;
-        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
-    }
-
-    .card-image {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        background: linear-gradient(135deg, #eef2ff, #e6e9f0);
-        transition: transform 0.3s;
-    }
-
-    .card:hover .card-image {
-        transform: scale(1.02);
-    }
-
-    .card-content {
-        padding: 1.5rem;
-        flex: 1;
-    }
-
-    .card-content h2 {
-        font-size: 1.35rem;
-        font-weight: 700;
-        margin-bottom: 0.6rem;
-        color: #0f172a;
-        letter-spacing: -0.01em;
-    }
-
-    .card-content p {
-        color: #475569;
-        font-size: 0.9rem;
-        line-height: 1.5;
-        margin-bottom: 1rem;
-    }
-
-    .tech-badge {
-        display: inline-block;
-        background: #f1f5f9;
-        padding: 0.2rem 0.7rem;
-        border-radius: 20px;
-        font-size: 0.7rem;
-        font-weight: 500;
-        color: #1e4a6b;
-        margin-top: 0.5rem;
-    }
-
-    /* No Results */
-    .hidden {
-        display: none;
-    }
-
-    #noResults {
-        text-align: center;
-        padding: 3rem;
-        color: #64748b;
-        font-size: 1rem;
-        background: white;
-        border-radius: 40px;
-        margin-top: 2rem;
-        border: 1px solid #e2e8f0;
-    }
-
-    /* Footer */
-    .footer {
-        text-align: center;
-        margin-top: 4rem;
-        padding-top: 2rem;
-        border-top: 1px solid #e2e8f0;
-        color: #64748b;
-        font-size: 0.85rem;
-    }
-
-    .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .social-links a {
-        color: #475569;
-        font-size: 1.2rem;
-        transition: color 0.2s;
-    }
-
-    .social-links a:hover {
-        color: #1e4a6b;
-    }
-
-    @media (max-width: 700px) {
-        .container {
-            padding: 1.5rem 1rem 3rem;
-        }
-        .hero h1 {
-            font-size: 2rem;
-        }
-        .projects {
-            grid-template-columns: 1fr;
-            gap: 1.25rem;
-        }
-        .about-btn {
-            top: 1rem;
-            right: 1rem;
-        }
-        .about-img {
-            width: 44px;
-            height: 44px;
-        }
-    }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Debrishi Biswas: full-stack web projects, AI experiments, and computer vision work.">
+  <meta property="og:title" content="Debrishi Biswas — Developer & AI Enthusiast">
+  <meta property="og:description" content="Selected projects in web development, AI, and computer vision.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dcoding15.github.io/PROJECT-PORTFOLIO/">
+  <meta property="og:image" content="images/p1.jpg">
+  <title>Debrishi Biswas — Developer & AI Enthusiast</title>
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-<!-- About Me Button -->
-<a href="about.html" class="about-btn">
-    <img src="images/about_me.png" alt="About Debrishi" class="about-img">
-</a>
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="Debrishi Biswas home">
+      <span class="wordmark-mark">DB</span>
+      <span class="wordmark-name">DEBRISHI<br>BISWAS</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+      <span class="menu-toggle-label">Menu</span>
+      <span class="menu-toggle-icon" aria-hidden="true">+</span>
+    </button>
+    <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
+      <a href="#work">Selected work <span aria-hidden="true">↘</span></a>
+      <a href="about.html">About <span aria-hidden="true">↗</span></a>
+      <a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
 
-<div class="container">
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>✨ Debrishi Biswas</h1>
-        <div class="hero-subtitle">
-            Web Developer • AI & Computer Vision Enthusiast
+  <main id="main-content">
+    <section class="hero section-shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Developer / AI &amp; computer vision</p>
+        <h1 id="hero-title">Ideas into<br><span>working</span> things.</h1>
+        <div class="hero-bottom">
+          <p class="hero-intro">I’m Debrishi — a developer who likes making useful software, exploring new technology, and sweating the details.</p>
+          <a class="text-link" href="#work">Explore selected work <span aria-hidden="true">↓</span></a>
         </div>
-        <div class="tech-pills">
-            <span class="pill"><i class="fas fa-server"></i> Django</span>
-            <span class="pill"><i class="fab fa-react"></i> React + Vite</span>
-            <span class="pill"><i class="fas fa-database"></i> PostgreSQL</span>
-            <span class="pill"><i class="fas fa-fire"></i> PyTorch</span>
-            <span class="pill"><i class="fas fa-bolt"></i> FastAPI</span>
-            <span class="pill"><i class="fas fa-camera"></i> OpenCV</span>
+      </div>
+      <a class="hero-feature" href="https://github.com/Dcoding15/Hotel-Booking-and-Reservation.git" target="_blank" rel="noreferrer" aria-label="View Hotel Booking and Reservation project on GitHub">
+        <img src="images/p1.jpg" alt="Hotel courtyard and pool at sunset" fetchpriority="high">
+        <span class="feature-index">FEATURED PROJECT / 01</span>
+        <span class="feature-caption">
+          <span><strong>Hotel booking, reimagined.</strong><small>Explore the project <span aria-hidden="true">↗</span></small></span>
+          <span class="feature-arrow" aria-hidden="true">↗</span>
+        </span>
+      </a>
+      <span class="hero-side-note" aria-hidden="true">A curious mind. A practical approach.</span>
+    </section>
+
+    <section class="stack-strip" aria-label="Technologies">
+      <p>TOOLS I BUILD WITH</p>
+      <ul>
+        <li>Python</li>
+        <li>React</li>
+        <li>Django</li>
+        <li>FastAPI</li>
+        <li>PyTorch</li>
+        <li>PostgreSQL</li>
+      </ul>
+    </section>
+
+    <section class="work-section section-shell" id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">A few things I’ve made <span class="section-number">/ 01</span></p>
+          <h2 id="work-title">Selected work<span class="accent-mark">.</span></h2>
         </div>
-    </div>
+        <p class="section-intro">A mix of full-stack builds, practical experiments, and ideas I wanted to bring to life.</p>
+      </div>
 
-    <!-- Search Bar -->
-    <div class="search-container">
-        <i class="fas fa-search"></i>
-        <input type="text" id="searchInput" placeholder="Search projects by name or technology...">
-    </div>
+      <div class="project-toolbar">
+        <label class="search-field">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <span class="visually-hidden">Search projects</span>
+          <input id="project-search" type="search" placeholder="Find a project or technology" autocomplete="off">
+          <span class="search-shortcut" aria-hidden="true">↵</span>
+        </label>
+        <p class="project-count" id="project-count" aria-live="polite">05 PROJECTS</p>
+      </div>
 
-    <!-- Projects Grid -->
-    <div class="projects" id="projectsContainer">
-        <!-- Hotel booking and reservation platform -->
-        <a href="https://github.com/Dcoding15/Hotel-Booking-and-Reservation.git" class="card" data-title="Hotel Booking and Reservation">
-		    <img src="images/p1.jpg" alt="Hotel booking and reservation platform" class="card-image">
-		    <div class="card-content">
-		        <h2>🏨 Hotel Booking & Reservation</h2>
-		        <p>Discover hotels, compare rooms, and manage reservations with secure Razorpay payments and real-time customer support.</p>
-		        <span class="tech-badge"><i class="fab fa-react"></i> React + Vite</span>
-		        <span class="tech-badge"><i class="fab fa-node-js"></i> Node.js + Express</span>
-		        <span class="tech-badge"><i class="fas fa-database"></i> MongoDB + PostgreSQL</span>
-		        <span class="tech-badge"><i class="fas fa-lock"></i> JWT Authentication</span>
-		        <span class="tech-badge"><i class="fas fa-ticket"></i> Hotel Reservations</span>
-		        <span class="tech-badge"><i class="fas fa-credit-card"></i> Razorpay Payments</span>
-		        <span class="tech-badge"><i class="fas fa-comments"></i> Live Support Chat</span>
-		    </div>
-		</a>
-
-        <!-- Collection of Mini Projects -->
-        <a href="https://github.com/Dcoding15/MINI-PROJECTS.git" class="card" data-title="Collection of mini projects">
-            <img src="images/p3.jpg" alt="Collection of Mini Projects" class="card-image">
-            <div class="card-content">
-                <h2>🗃️ Collection of Mini Projects</h2>
-                <p>A collection of small, independent projects showcasing various skills and technologies.</p>
-                <span class="tech-badge"><i class="fab fa-python"></i> Django</span>
-                <span class="tech-badge"><i class="fab fa-html5"></i> HTML5 & <i class="fab fa-css3-alt"></i>CSS3</span>
-                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+      <div class="project-grid" id="project-grid">
+        <article class="project-card project-card-featured" data-search="hotel booking reservation rooms payments razorpay customer support react vite node express mongodb postgresql jwt">
+          <a class="project-image" href="https://github.com/Dcoding15/Hotel-Booking-and-Reservation.git" target="_blank" rel="noreferrer" aria-label="View Hotel Booking and Reservation on GitHub">
+            <img src="images/p1.jpg" alt="Hotel courtyard at sunset, representing the hotel reservation project" loading="lazy">
+            <span class="project-image-index">01 / WEB</span>
+            <span class="image-arrow" aria-hidden="true">↗</span>
+          </a>
+          <div class="project-info">
+            <div class="project-title-line">
+              <h3>Hotel Booking &amp; Reservation</h3>
+              <span class="project-category">FULL-STACK</span>
             </div>
-        </a>
+            <p>A booking platform for discovering stays, comparing rooms, and managing reservations, with payment and support features.</p>
+            <ul class="tag-list" aria-label="Technologies used">
+              <li>React</li><li>Node.js</li><li>MongoDB</li><li>PostgreSQL</li>
+            </ul>
+            <a class="project-link" href="https://github.com/Dcoding15/Hotel-Booking-and-Reservation.git" target="_blank" rel="noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
 
-        <!-- AI TREND ANALYZER -->
-        <a href="https://github.com/Dcoding15/AI-Share-Trend-Analyzer.git" class="card" data-title="ai share trend analyzer">
-            <img src="images/p4.jpg" alt="AI Share Trend Analyzer" class="card-image">
-            <div class="card-content">
-                <h2>📈 AI Share Trend Analyzer</h2>
-                <p>Real-time analysis of trending topics powered by the Llama 3.2 LLM and technical indicators.</p>
-                <span class="tech-badge"><i class="fas fa-bolt"></i> FastAPI</span>
-                <span class="tech-badge"><i class="fab fa-react"></i> React + Vite</span>
-                <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
-                <span class="tech-badge"><i class="fas fa-brain"></i> Llama 3.2</span>
-                <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+        <article class="project-card" data-search="mini projects collection django html css javascript">
+          <a class="project-image project-image-paper" href="https://github.com/Dcoding15/MINI-PROJECTS.git" target="_blank" rel="noreferrer" aria-label="View Mini Projects collection on GitHub">
+            <img src="images/p3.jpg" alt="Notebook with the words Big journeys begin with small steps" loading="lazy">
+            <span class="project-image-index">02 / EXPERIMENTS</span>
+            <span class="image-arrow" aria-hidden="true">↗</span>
+          </a>
+          <div class="project-info">
+            <div class="project-title-line">
+              <h3>Mini Projects</h3>
+              <span class="project-category">EXPERIMENTS</span>
             </div>
-        </a>
+            <p>A collection of small, independent builds made to learn, test ideas, and try different approaches.</p>
+            <ul class="tag-list" aria-label="Technologies used">
+              <li>Django</li><li>HTML</li><li>CSS</li><li>JavaScript</li>
+            </ul>
+            <a class="project-link" href="https://github.com/Dcoding15/MINI-PROJECTS.git" target="_blank" rel="noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
 
-        <!-- ASL Recognition -->
-        <a href="https://github.com/Dcoding15/ASL-Recognition.git" class="card" data-title="asl recognition system">
-            <img src="images/p5.jpg" alt="ASL Recognition" class="card-image">
-            <div class="card-content">
-                <h2>✋ ASL Recognition System</h2>
-                <p>Real-time American Sign Language recognition using computer vision and deep learning techniques.</p>
-                <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
-                <span class="tech-badge"><i class="fas fa-eye"></i> OpenCV</span>
-                <span class="tech-badge"><i class="fas fa-object-group"></i> YOLOv11</span>
-                <span class="tech-badge"><i class="fas fa-chart-line"></i> Matplotlib</span>
-                <span class="tech-badge"><i class="fas fa-fire"></i> PyTorch</span>
+        <article class="project-card" data-search="ai share trend analyzer stock trends llm technical indicators fastapi react vite postgresql llama">
+          <a class="project-image" href="https://github.com/Dcoding15/AI-Share-Trend-Analyzer.git" target="_blank" rel="noreferrer" aria-label="View AI Share Trend Analyzer on GitHub">
+            <img src="images/p4.jpg" alt="Financial chart visualization with rising and falling market trends" loading="lazy">
+            <span class="project-image-index">03 / AI</span>
+            <span class="image-arrow" aria-hidden="true">↗</span>
+          </a>
+          <div class="project-info">
+            <div class="project-title-line">
+              <h3>AI Share Trend Analyzer</h3>
+              <span class="project-category">DATA &amp; AI</span>
             </div>
-        </a>
+            <p>A market analysis tool combining trend signals and technical indicators to make financial data easier to explore.</p>
+            <ul class="tag-list" aria-label="Technologies used">
+              <li>FastAPI</li><li>React</li><li>PostgreSQL</li><li>Llama 3.2</li>
+            </ul>
+            <a class="project-link" href="https://github.com/Dcoding15/AI-Share-Trend-Analyzer.git" target="_blank" rel="noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
 
-        <!-- Online Shopping Cart -->
-        <a href="https://github.com/Dcoding15/Online-Shopping-Cart.git" class="card" data-title="online shopping cart">
-            <img src="images/p6.jpg" alt="Online Shopping Cart" class="card-image">
-            <div class="card-content">
-                <h2>🛒 Online Shopping Cart</h2>
-				<p>Multi-seller marketplace web app featuring phone authentication, role-based access, product and cart management, wallet checkout, and secure order processing using database transactions and row locks.</p>
-				<span class="tech-badge"><i class="fab fa-php"></i> PHP</span>
-				<span class="tech-badge"><i class="fab fa-laravel"></i> Laravel</span>
-				<span class="tech-badge"><i class="fas fa-bolt"></i> Vite</span>
-				<span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS</span>
-				<span class="tech-badge"><i class="fas fa-code"></i> Blade</span>
+        <article class="project-card" data-search="american sign language asl recognition computer vision deep learning opencv pytorch yolov11">
+          <a class="project-image project-image-light" href="https://github.com/Dcoding15/ASL-Recognition.git" target="_blank" rel="noreferrer" aria-label="View ASL Recognition project on GitHub">
+            <img src="images/p5.jpg" alt="Hands showing American Sign Language letters" loading="lazy">
+            <span class="project-image-index">04 / COMPUTER VISION</span>
+            <span class="image-arrow" aria-hidden="true">↗</span>
+          </a>
+          <div class="project-info">
+            <div class="project-title-line">
+              <h3>ASL Recognition</h3>
+              <span class="project-category">COMPUTER VISION</span>
             </div>
-        </a>
-    </div>
+            <p>A comparative study of video action recognition models for recognizing American Sign Language gestures.</p>
+            <ul class="tag-list" aria-label="Technologies used">
+              <li>Python</li><li>OpenCV</li><li>PyTorch</li><li>YOLOv11</li>
+            </ul>
+            <a class="project-link" href="https://github.com/Dcoding15/ASL-Recognition.git" target="_blank" rel="noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
 
-    <!-- No Results Message -->
-    <p id="noResults" class="hidden">🔍 No projects found. Try searching for "hotel", "doctor", or "tic tac toe".</p>
+        <article class="project-card" data-search="online shopping cart marketplace ecommerce multi seller authentication wallet checkout laravel php blade">
+          <a class="project-image" href="https://github.com/Dcoding15/Online-Shopping-Cart.git" target="_blank" rel="noreferrer" aria-label="View Online Shopping Cart on GitHub">
+            <img src="images/p6.jpg" alt="Online shopping box on a laptop keyboard" loading="lazy">
+            <span class="project-image-index">05 / E-COMMERCE</span>
+            <span class="image-arrow" aria-hidden="true">↗</span>
+          </a>
+          <div class="project-info">
+            <div class="project-title-line">
+              <h3>Online Shopping Cart</h3>
+              <span class="project-category">E-COMMERCE</span>
+            </div>
+            <p>A multi-seller marketplace with product and cart management, wallet checkout, and transactional order processing.</p>
+            <ul class="tag-list" aria-label="Technologies used">
+              <li>PHP</li><li>Laravel</li><li>Blade</li><li>PostgreSQL</li>
+            </ul>
+            <a class="project-link" href="https://github.com/Dcoding15/Online-Shopping-Cart.git" target="_blank" rel="noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
+      <p class="empty-state" id="empty-state" hidden>No projects match that search. Try another name or technology.</p>
+    </section>
 
-    <!-- Footer -->
-    <div class="footer">
-        <div class="social-links">
-            <a href="https://github.com/Dcoding15" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/debrishi-biswas-542450267" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/dbv4_72.73.9.3/" target="_blank" aria-label="Twitter"><i class="fab fa-instagram"></i></a>
+    <section class="about-band section-shell" aria-labelledby="about-band-title">
+      <p class="eyebrow">A little context <span class="section-number">/ 02</span></p>
+      <div class="about-band-content">
+        <h2 id="about-band-title">Curiosity is<br>part of the process<span class="accent-mark">.</span></h2>
+        <div>
+          <p>I enjoy turning a rough idea into a useful product — and learning something new along the way. My work spans web development, machine learning, and computer vision.</p>
+          <a class="button-link" href="about.html">More about me <span aria-hidden="true">↗</span></a>
         </div>
-        <p>Built with Django • Full-stack web applications • <span id="currentYear"></span></p>
+      </div>
+    </section>
+
+    <section class="contact-section section-shell" id="contact" aria-labelledby="contact-title">
+      <p class="eyebrow">Have a good one in mind? <span class="section-number">/ 03</span></p>
+      <div class="contact-content">
+        <h2 id="contact-title">Let’s make<br>it <span>real.</span></h2>
+        <div class="contact-details">
+          <p>I’m always glad to talk about thoughtful ideas, software, and opportunities to build.</p>
+          <a class="email-link" href="mailto:debrishibiswas2003@gmail.com">debrishibiswas2003@gmail.com <span aria-hidden="true">↗</span></a>
+          <p class="location-note">Kolkata, West Bengal, India</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <a class="footer-mark" href="index.html">DB<span>.</span></a>
+    <p>Made with curiosity and plain HTML, CSS &amp; JavaScript.</p>
+    <div class="footer-links">
+      <a href="https://github.com/Dcoding15" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      <a href="https://www.linkedin.com/in/debrishi-biswas-542450267" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a href="https://www.instagram.com/dbv4_72.73.9.3/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span></a>
     </div>
-</div>
-
-<script>
-    // Search functionality
-    const searchInput = document.getElementById('searchInput');
-    const projectsContainer = document.getElementById('projectsContainer');
-    const cards = Array.from(document.querySelectorAll('.card'));
-    const noResults = document.getElementById('noResults');
-
-    function filterProjects() {
-        const searchTerm = searchInput.value.toLowerCase().trim();
-        let visibleCount = 0;
-
-        cards.forEach(card => {
-            const title = card.getAttribute('data-title') || card.querySelector('h2')?.innerText.toLowerCase() || '';
-            const description = card.querySelector('p')?.innerText.toLowerCase() || '';
-            const badges = Array.from(card.querySelectorAll('.tech-badge')).map(b => b.innerText.toLowerCase()).join(' ');
-            
-            const matches = searchTerm === '' || 
-                title.includes(searchTerm) || 
-                description.includes(searchTerm) || 
-                badges.includes(searchTerm);
-            
-            if (matches) {
-                card.style.display = '';
-                visibleCount++;
-            } else {
-                card.style.display = 'none';
-            }
-        });
-
-        if (visibleCount === 0 && searchTerm !== '') {
-            noResults.classList.remove('hidden');
-        } else {
-            noResults.classList.add('hidden');
-        }
-    }
-
-    searchInput.addEventListener('input', filterProjects);
-    
-    // Set current year in footer
-    document.getElementById('currentYear').innerText = new Date().getFullYear();
-</script>
-
+    <small>© <span data-current-year></span> Debrishi Biswas</small>
+  </footer>
 </body>
 </html>
