@@ -20,6 +20,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 40px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--paper-deep);
 }
 
 body {
@@ -55,6 +57,30 @@ img {
 ::selection {
   color: var(--ink);
   background: #d7c7b5;
+}
+
+/* Theme-matched scrollbar (Chrome, Edge, and Safari) */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border: 2px solid var(--paper-deep);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #95643e;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--paper-deep);
 }
 
 :focus-visible {
