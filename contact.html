@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact Debrishi Biswas about a project, opportunity, or idea. Attach a brief or supporting files.">
+  <title>Contact — Debrishi Biswas</title>
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <main id="main-content">
+    <section class="projects-hero contact-page-hero" id="top" aria-labelledby="contact-title">
+      <img class="hero-image" src="images/architecture-detail.jpg" alt="" fetchpriority="high">
+      <div class="hero-shade" aria-hidden="true"></div>
+      <header class="site-header">
+        <a class="wordmark" href="index.html#top" aria-label="Debrishi Biswas home">DB<span>.</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="menu-toggle-label">Menu</span>
+          <span class="menu-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
+          <a href="index.html#top"><span class="nav-symbol" aria-hidden="true">⌂</span> Intro</a>
+          <a href="projects.html"><span class="nav-symbol" aria-hidden="true">▦</span> Projects</a>
+          <a href="about.html"><span class="nav-symbol" aria-hidden="true">♧</span> About</a>
+          <a class="is-current" href="contact.html" aria-current="page"><span class="nav-symbol" aria-hidden="true">↗</span> Contact</a>
+        </nav>
+      </header>
+      <div class="projects-hero-title">
+        <p class="eyebrow">03 / Begin a conversation</p>
+        <h1 id="contact-title">Let’s talk<span>.</span></h1>
+        <p>Have an idea, a question, or a project in mind?</p>
+      </div>
+    </section>
+
+    <section class="contact-page section-shell" aria-labelledby="form-title">
+      <div class="contact-page-intro">
+        <p class="eyebrow">Kolkata, India · Open to good ideas</p>
+        <h2 id="form-title">Tell me a little<br>about it<span class="accent-mark">.</span></h2>
+        <p>Share the details below. You can attach a brief, screenshots, or other supporting files if they help explain your idea.</p>
+        <a class="contact-email-fallback" href="mailto:debrishibiswas2003@gmail.com">Prefer email? Write directly <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <form class="contact-form" id="contact-form" action="https://formsubmit.co/debrishibiswas2003@gmail.com" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_next" value="https://dcoding15.github.io/PROJECT-PORTFOLIO/thanks.html">
+        <input id="mail-subject" type="hidden" name="_subject" value="New portfolio contact form message">
+        <input class="trap-field" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="form-field">
+          <label for="sender-name">Your name <span>(optional)</span></label>
+          <input id="sender-name" name="name" type="text" autocomplete="name" maxlength="120" placeholder="How should I address you?">
+        </div>
+
+        <div class="form-field">
+          <label for="sender-email">Your email</label>
+          <input id="sender-email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required>
+        </div>
+
+        <div class="form-field">
+          <label for="message-subject">Subject</label>
+          <input id="message-subject" name="subject" type="text" maxlength="150" placeholder="What would you like to discuss?" required>
+        </div>
+
+        <div class="form-field">
+          <label for="message-body">Message</label>
+          <textarea id="message-body" name="message" rows="6" maxlength="10000" placeholder="A few details about your idea, project, or question..." required></textarea>
+        </div>
+
+        <div class="form-field attachment-field">
+          <label for="attachments">Attachments <span>(optional)</span></label>
+          <input id="attachments" name="attachment" type="file" multiple aria-describedby="attachment-help attachment-list">
+          <small id="attachment-help">Up to 5 MB per file and 10 MB total.</small>
+          <small id="attachment-list" class="attachment-list" aria-live="polite">No files selected.</small>
+        </div>
+
+        <p class="form-note">Your message and files are submitted through FormSubmit. On the first submission, check your inbox to confirm the receiving email address. CAPTCHA protection stays enabled.</p>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        <button class="form-submit" type="submit">Send message <span aria-hidden="true">↗</span></button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <div class="footer-brand"><a class="footer-mark" href="index.html#top">DB<span>.</span></a><span>Developer, learner, problem-solver.</span></div>
+    <a class="footer-start" href="index.html#top">Back to home <span aria-hidden="true">↗</span></a>
+    <div class="footer-bottom">
+      <small>© <span data-current-year></span> Debrishi Biswas</small>
+      <span>Kolkata, India</span>
+      <div class="footer-links">
+        <a href="https://github.com/Dcoding15" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://www.linkedin.com/in/debrishi-biswas-542450267" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="https://www.instagram.com/dbv4_72.73.9.3/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span></a>
+      </div>
+      <a class="back-top" href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
