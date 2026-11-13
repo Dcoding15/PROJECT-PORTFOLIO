@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Learn about Debrishi Biswas, an academic associate and developer interested in AI, machine learning, and building software.">
+  <meta name="description" content="About Debrishi Biswas: an academic associate and developer working across web development, AI, and computer vision.">
   <title>About — Debrishi Biswas</title>
   <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
   <link rel="stylesheet" href="styles.css">
@@ -12,43 +12,49 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <header class="site-header">
-    <a class="wordmark" href="index.html" aria-label="Debrishi Biswas home">
-      <span class="wordmark-mark">DB</span>
-      <span class="wordmark-name">DEBRISHI<br>BISWAS</span>
-    </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
-      <span class="menu-toggle-label">Menu</span>
-      <span class="menu-toggle-icon" aria-hidden="true">+</span>
-    </button>
-    <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
-      <a href="index.html#work">Selected work <span aria-hidden="true">↗</span></a>
-      <a href="about.html" aria-current="page">About <span aria-hidden="true">↘</span></a>
-      <a class="nav-contact" href="index.html#contact">Let’s talk <span aria-hidden="true">↗</span></a>
-    </nav>
-  </header>
-
   <main id="main-content">
-    <section class="about-hero section-shell" aria-labelledby="about-title">
-      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> A bit about me <span class="section-number">/ 01</span></p>
-      <h1 id="about-title">Curious by nature.<br><span>Builder</span> by choice.</h1>
-      <div class="about-intro">
+    <section class="about-hero" id="top" aria-labelledby="about-title">
+      <img class="hero-image" src="images/architecture-detail.jpg" alt="" fetchpriority="high">
+      <div class="hero-shade" aria-hidden="true"></div>
+      <header class="site-header">
+        <a class="wordmark" href="index.html#top" aria-label="Debrishi Biswas home">DB<span>.</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="menu-toggle-label">Menu</span>
+          <span class="menu-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
+          <a href="index.html#top"><span class="nav-symbol" aria-hidden="true">⌂</span> Intro</a>
+          <a href="index.html#work"><span class="nav-symbol" aria-hidden="true">▦</span> Projects</a>
+          <a class="is-current" href="#about-title" aria-current="page"><span class="nav-symbol" aria-hidden="true">♧</span> About</a>
+          <a href="index.html#contact"><span class="nav-symbol" aria-hidden="true">↗</span> Contact</a>
+        </nav>
+      </header>
+      <div class="about-hero-title">
+        <p class="eyebrow">A bit about me · Kolkata, India</p>
+        <h1 id="about-title">Curious by nature.<br>Builder by choice.</h1>
+      </div>
+      <span class="hero-index" aria-hidden="true">THE PERSON BEHIND THE PROJECTS</span>
+    </section>
+
+    <section class="about-intro section-shell">
+      <p class="eyebrow">01 / The short story</p>
+      <div class="about-intro-copy">
         <p class="about-lead">I’m Debrishi Biswas, an Academic Associate and developer based in Kolkata. I like solving problems, learning how things work, and building software that brings ideas to life.</p>
-        <p>I work across full-stack web development and AI — from Django, FastAPI, and React to experiments with PyTorch, TensorFlow, and OpenCV. I care about making the technical parts useful, clear, and approachable.</p>
+        <p>I work across full-stack web development and AI — from Django, FastAPI, and React to experiments with PyTorch, TensorFlow, and OpenCV. I care about making technical ideas useful, clear, and approachable.</p>
       </div>
       <div class="about-stats" aria-label="Profile at a glance">
         <div><span>BASED IN</span><strong>Kolkata, India</strong></div>
-        <div><span>FOCUS</span><strong>Web / AI / Vision</strong></div>
+        <div><span>FOCUS</span><strong>Web · AI · Vision</strong></div>
         <div><span>EDUCATION</span><strong>Computer Applications</strong></div>
       </div>
     </section>
 
-    <section class="resume-section section-shell" aria-labelledby="education-title">
-      <div class="resume-heading">
-        <p class="eyebrow">The background <span class="section-number">/ 02</span></p>
+    <section class="resume-section" aria-labelledby="education-title">
+      <div class="resume-heading section-shell">
+        <p class="eyebrow">02 / The background</p>
         <h2 id="education-title">Education<span class="accent-mark">.</span></h2>
       </div>
-      <div class="resume-content">
+      <div class="resume-content section-shell">
         <article class="timeline-item">
           <span class="timeline-date">JUN 2024 — MAY 2026</span>
           <div><h3>Master of Computer Applications</h3><p>Brainware University, Barasat</p></div>
@@ -70,7 +76,7 @@
 
     <section class="skills-section section-shell" aria-labelledby="skills-title">
       <div class="resume-heading">
-        <p class="eyebrow">Things I work with <span class="section-number">/ 03</span></p>
+        <p class="eyebrow">03 / Things I work with</p>
         <h2 id="skills-title">Skills &amp; tools<span class="accent-mark">.</span></h2>
       </div>
       <div class="skills-content">
@@ -84,7 +90,7 @@
 
     <section class="credentials-section section-shell" aria-labelledby="credentials-title">
       <div class="resume-heading">
-        <p class="eyebrow">Learning along the way <span class="section-number">/ 04</span></p>
+        <p class="eyebrow">04 / Learning along the way</p>
         <h2 id="credentials-title">More to know<span class="accent-mark">.</span></h2>
       </div>
       <div class="credentials-content">
@@ -103,24 +109,30 @@
       </div>
     </section>
 
-    <section class="about-cta section-shell" aria-labelledby="about-cta-title">
-      <p class="eyebrow">That’s the short version <span class="section-number">/ 05</span></p>
-      <div class="about-cta-row">
-        <h2 id="about-cta-title">Want to see<br>what I’ve built<span class="accent-mark">?</span></h2>
-        <a class="button-link" href="index.html#work">Browse selected work <span aria-hidden="true">↗</span></a>
+    <section class="about-cta" aria-labelledby="about-cta-title">
+      <div class="section-shell">
+        <p class="eyebrow">05 / The next step</p>
+        <div class="about-cta-row">
+          <h2 id="about-cta-title">Want to see<br>what I’ve built<span class="accent-mark">?</span></h2>
+          <a class="button-link" href="index.html#work">Browse selected work <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer section-shell">
-    <a class="footer-mark" href="index.html">DB<span>.</span></a>
-    <p>Made with curiosity and plain HTML, CSS &amp; JavaScript.</p>
-    <div class="footer-links">
-      <a href="https://github.com/Dcoding15" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-      <a href="https://www.linkedin.com/in/debrishi-biswas-542450267" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-      <a href="https://www.instagram.com/dbv4_72.73.9.3/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span></a>
+    <div class="footer-brand"><a class="footer-mark" href="index.html#top">DB<span>.</span></a><span>Developer, learner, problem-solver.</span></div>
+    <a class="footer-start" href="mailto:debrishibiswas2003@gmail.com">Let’s start a conversation <span aria-hidden="true">↗</span></a>
+    <div class="footer-bottom">
+      <small>© <span data-current-year></span> Debrishi Biswas</small>
+      <span>Kolkata, India</span>
+      <div class="footer-links">
+        <a href="https://github.com/Dcoding15" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://www.linkedin.com/in/debrishi-biswas-542450267" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="https://www.instagram.com/dbv4_72.73.9.3/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span></a>
+      </div>
+      <a class="back-top" href="#top">Back to top ↑</a>
     </div>
-    <small>© <span data-current-year></span> Debrishi Biswas</small>
   </footer>
 </body>
 </html>
